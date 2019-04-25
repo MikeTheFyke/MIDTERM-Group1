@@ -4,43 +4,40 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         knex('users').insert({
           id: 1,
-          first_name: 'Alice',
-          last_name: 'Wonderland',
-          user_name: 'whiterabbit',
-          email:  'whiterabbit@email.com',
-          password:  '12345',
-          // avatar:  'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+          first_name: 'Johnny',
+          last_name: 'Walker',
+          user_name: 'singlemalt',
+          email:  'hangover@gmail.com',
+          password:  '123',
         }),
         knex('users').insert({
           id: 2,
-          first_name: 'Bob',
-          last_name: 'Marley',
-          user_name: 'chillvibes',
-          email:  'chillvibes@email.com',
-          password:  '12345',
-          // avatar:  'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+          first_name: 'Lady',
+          last_name: 'Gaga',
+          user_name: 'meatsuit',
+          email:  'pokerface@gmail.com',
+          password:  '543',
         }),
         knex('users').insert({
           id: 3,
-          first_name: 'Charlie',
-          last_name: 'Chocolate',
-          user_name: 'willywonka',
-          email: 'willywonka@email.com',
-          password:  '12345',
-          // avatar:  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9PqvCqAfsJNWTHMLdwQ0zEKv2ZikLR419IEJssoX7ZrkV4pNP'
+          first_name: 'Bill',
+          last_name: 'Murray',
+          user_name: 'ghostbuster',
+          email: 'lostintokyo@gmail.com',
+          password:  '1111',
         }),
 
-        knex('category').insert({
+        knex('topics').insert({
           id: 1,
           description: 'food'
         }),
-        knex('category').insert({
+        knex('topics').insert({
           id: 2,
           description: 'music'
         }),
-        knex('category').insert({
+        knex('topics').insert({
           id: 3,
-          description: 'porn'
+          description: 'movies'
         }),
 
         knex('ratings').insert({
@@ -70,27 +67,45 @@ exports.seed = function(knex, Promise) {
 
         knex('resources').insert({
           user_id: 1,
-          url: 'http://www.alice-in-wonderland.net/',
-          title: 'Wonderland',
-          description: 'Good for kids and adults',
+          url: 'http://www.lcbo.com/',
+          title: 'Lickbo',
+          description: 'Only for fun adults',
 
         }),
         knex('resources').insert({
           user_id: 2,
-          url: 'https://en.wikipedia.org/wiki/Bob_Marley',
-          title: 'Music',
+          url: 'https://en.wikipedia.org/wiki/Lady_Gaga',
+          title: 'Goo Goo GaGa',
           description: 'Great music Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula',
 
         }),
         knex('resources').insert({
           user_id: 3,
-          url: 'https://en.wikipedia.org/wiki/Willy_Wonka',
-          title: 'Willy Wonka Info',
+          url: 'https://www.fillmurray.com/',
+          title: 'Bill Murray filler',
           description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. ',
-          // created_on: '2013-05-23',
-          // created_by: 3,
-          // category_id: 1
+
         }),
+
+        knex('comments').insert({
+          id: 1,
+          user_id: 1,
+          text: 'Great dude! adipiscing elit. Aenean commodo ligula eget dolor. .',
+          resource_id: 2
+        }),
+        knex('comments').insert({
+          id: 2,
+          user_id: 2,
+          text: ':( Meh,ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. C',
+          resource_id: 3
+        }),
+        knex('comments').insert({
+          id: 3,
+          user_id: 3,
+          text: 'Hipster ispsum ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenea',
+          resource_id: 1
+        }),
+
 
       ]);
     });

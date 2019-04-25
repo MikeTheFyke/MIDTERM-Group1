@@ -17,16 +17,12 @@ exports.up = function(knex, Promise) {
          table.integer('user_id').references('users.id').onDelete('cascade');
      }),
 
-      knex.schema.createTable('topics', function(table){
-         table.increments();
-         table.string('title', 50);
-         table.integer('user_id').references('users.id').onDelete('cascade');
-     }),
-
       knex.schema.createTable('comments', function(table){
          table.increments();
          table.string('text', 500);
          table.integer('user_id').references('users.id').onDelete('cascade');
+         table.integer('resources_id').references('resources.id').onDelete('cascade');
+
      }),
       knex.schema.createTable('ratings', function(table){
          table.increments();
@@ -35,16 +31,20 @@ exports.up = function(knex, Promise) {
          table.integer('resources_id').references('resources.id').onDelete('cascade');
      }),
 
-      knex.schema.createTable('category', function(table){
+      knex.schema.createTable('topics', function(table){
          table.increments();
-         table.string('description', 50);
-
-     }),
-
-      knex.schema.createTable('topics_resources', function(table){
-         table.increments();
+         table.string('title', 50);
+         table.integer('user_id').references('users.id').onDelete('cascade');
          table.integer('resources_id').references('resources.id').onDelete('cascade');
-         table.integer('topics_id').references('topics.id').onDelete('cascade');
+      }),
+
+      knex.schema.createTable('resources_info', function(table){
+         table.increments();
+         table.bigInteger('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
+         table.bigInteger('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
+         table.bigInteger('user_id').unsigned().index().references('users.id').onDelete('cascade');
+         table.bigInteger('rating_id').unsigned().index().references('ratings.id').onDelete('cascade');
+         table.boolean('liked');
      })
 
 
@@ -53,13 +53,11 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
     return Promise.all([
-        knex.schema.dropTable('category'),
-        knex.schema.dropTable('topics_resources'),
+        knex.schema.dropTable('resources_info'),
         knex.schema.dropTable('ratings'),
         knex.schema.dropTable('comments'),
         knex.schema.dropTable('resources'),
         knex.schema.dropTable('topics'),
-
         knex.schema.dropTable('users')
 
     ])
