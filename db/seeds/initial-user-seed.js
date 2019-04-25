@@ -66,6 +66,7 @@ exports.seed = function(knex, Promise) {
         }),
 
         knex('resources').insert({
+          id: 1,
           user_id: 1,
           url: 'http://www.lcbo.com/',
           title: 'Lickbo',
@@ -73,6 +74,8 @@ exports.seed = function(knex, Promise) {
 
         }),
         knex('resources').insert({
+          id: 2,
+
           user_id: 2,
           url: 'https://en.wikipedia.org/wiki/Lady_Gaga',
           title: 'Goo Goo GaGa',
@@ -80,6 +83,7 @@ exports.seed = function(knex, Promise) {
 
         }),
         knex('resources').insert({
+          id: 3,
           user_id: 3,
           url: 'https://www.fillmurray.com/',
           title: 'Bill Murray filler',
@@ -91,19 +95,19 @@ exports.seed = function(knex, Promise) {
           id: 1,
           user_id: 1,
           text: 'Great dude! adipiscing elit. Aenean commodo ligula eget dolor. .',
-          // resource_id: 2
+          resource_id: 2
         }),
         knex('comments').insert({
           id: 2,
           user_id: 2,
           text: ':( Meh,ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. C',
-          // resource_id: 3
+          resource_id: 3
         }),
         knex('comments').insert({
           id: 3,
           user_id: 3,
           text: 'Hipster ispsum ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenea',
-          // resource_id: 1
+          resource_id: 1
         }),
 
 

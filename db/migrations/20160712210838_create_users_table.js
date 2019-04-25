@@ -37,7 +37,7 @@ exports.up = function(knex, Promise) {
          table.increments();
          table.string('text', 500);
          table.integer('user_id').references('users.id').onDelete('cascade');
-         table.integer('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
+         table.integer('resource_id').references('id').inTable('resources').onDelete('cascade');
 
      }),
 
