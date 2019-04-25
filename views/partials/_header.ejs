@@ -1,0 +1,39 @@
+<header>
+  <div class= "nav-left">
+    <a href="/index">Home</a>
+      <form id="search-bar" method="GET" action="/results">
+      <input type="text" placeholder="search" name"search" />
+      </form>
+  </div>
+  <% let id = "TRUE"; %>
+  <% let username = "Mike"; %>
+    <% if (!id) {%>
+    <form method="POST" action = "/login">
+      <p> Would you like to register? <a data-open="register">Register</a></p>
+      <button class="log-button" data-open="login">Login</button>
+      <label>username<input type="text" placeholder="Username" name="username"/></label>
+
+      <form class="registration" method="POST" action="/register">
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span></button>
+        <h1 class="register-heading">Register</h1>
+        <label>name<input type="text" placeholder="Please enter your name." name="name"/></label>
+        <label>email<input type="text" placeholder="Please enter an email." name="email"/></label>
+        <label>username<input type="text" placeholder="Please enter a username." name="username"/></label>
+        <label>password<input type="password" plaeholder="Please enter a password." name="password"/></label>
+        <button class="register" data-open="register">Register</button>
+      </form>
+    </form>
+      <% } else { %>
+      <form method="POST" action = "/logout">
+        <li><a href="/users/<%=username%>/mywall">Your Walls</a></li>
+        <li><a href="/users/<%=username%>/new_topic">Create A New Wall</a></li>
+        <li><a href="/users/<%=username%>/new_resource">Create A New Link</a></li>
+        <li><a href="/users/<%=username%>">Loggin in as:</a></li>
+        <button class="log-button" type="submit">Logout</button>
+      </form>
+    <% } %>
+</header>
+
+
+
