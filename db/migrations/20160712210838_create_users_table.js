@@ -9,41 +9,44 @@ exports.up = function(knex, Promise) {
          table.string('email', 50);
          table.string('password', 50);
      }),
-      knex.schema.createTable('resources', function(table){
-         table.increments();
-         table.string('url', 250);
-         table.string('title', 50);
-         table.string('description', 250);
-         table.integer('user_id').references('users.id').onDelete('cascade');
-     }),
 
-      knex.schema.createTable('comments', function(table){
-         table.increments();
-         table.string('text', 500);
-         table.integer('user_id').references('users.id').onDelete('cascade');
-         table.integer('resources_id').references('resources.id').onDelete('cascade');
 
-     }),
+
       knex.schema.createTable('ratings', function(table){
          table.increments();
          table.string('rate');
          table.integer('user_id').references('users.id').onDelete('cascade');
-         table.integer('resources_id').references('resources.id').onDelete('cascade');
+         table.integer('resource_id').references('resources.id').onDelete('cascade');
      }),
 
       knex.schema.createTable('topics', function(table){
          table.increments();
          table.string('title', 50);
          table.integer('user_id').references('users.id').onDelete('cascade');
-         table.integer('resources_id').references('resources.id').onDelete('cascade');
+         table.integer('resource_id').references('resources.id').onDelete('cascade');
       }),
+
+        knex.schema.createTable('resources', function(table){
+         table.increments();
+         table.string('url', 250);
+         table.string('title', 50);
+         table.string('description', 250);
+         table.integer('user_id').references('users.id').onDelete('cascade');
+     }),
+        knex.schema.createTable('comments', function(table){
+         table.increments();
+         table.string('text', 500);
+         table.integer('user_id').references('users.id').onDelete('cascade');
+         table.integer('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
+
+     }),
 
       knex.schema.createTable('resources_info', function(table){
          table.increments();
-         table.bigInteger('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
-         table.bigInteger('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
-         table.bigInteger('user_id').unsigned().index().references('users.id').onDelete('cascade');
-         table.bigInteger('rating_id').unsigned().index().references('ratings.id').onDelete('cascade');
+         table.integer('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
+         table.integer('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
+         table.integer('user_id').unsigned().index().references('users.id').onDelete('cascade');
+         table.integer('rating_id').unsigned().index().references('ratings.id').onDelete('cascade');
          table.boolean('liked');
      })
 
@@ -53,12 +56,18 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
     return Promise.all([
+
         knex.schema.dropTable('resources_info'),
-        knex.schema.dropTable('ratings'),
         knex.schema.dropTable('comments'),
-        knex.schema.dropTable('resources'),
         knex.schema.dropTable('topics'),
+        knex.schema.dropTable('ratings'),
+        knex.schema.dropTable('resources'),
         knex.schema.dropTable('users')
+
+
+
+
+
 
     ])
 };

@@ -28,40 +28,40 @@ exports.seed = function(knex, Promise) {
         }),
 
         knex('topics').insert({
-          id: 1,
-          description: 'food'
+          // id: 1,
+          title: 'food'
         }),
         knex('topics').insert({
-          id: 2,
-          description: 'music'
+          // id: 2,
+          title: 'music'
         }),
         knex('topics').insert({
-          id: 3,
-          description: 'movies'
+          // id: 3,
+          title: 'movies'
         }),
 
         knex('ratings').insert({
-          id: 1,
+          // id: 1,
           rate: 0
         }),
         knex('ratings').insert({
-          id: 2,
+          // id: 2,
           rate: 1
         }),
         knex('ratings').insert({
-          id: 3,
+          // id: 3,
           rate: 2
         }),
         knex('ratings').insert({
-          id: 4,
+          // id: 4,
           rate: 3
         }),
         knex('ratings').insert({
-          id: 5,
+          // id: 5,
           rate: 4
         }),
         knex('ratings').insert({
-          id: 6,
+          // id: 6,
           rate: 5
         }),
 
@@ -91,19 +91,19 @@ exports.seed = function(knex, Promise) {
           id: 1,
           user_id: 1,
           text: 'Great dude! adipiscing elit. Aenean commodo ligula eget dolor. .',
-          resource_id: 2
+          // resource_id: 2
         }),
         knex('comments').insert({
           id: 2,
           user_id: 2,
           text: ':( Meh,ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. C',
-          resource_id: 3
+          // resource_id: 3
         }),
         knex('comments').insert({
           id: 3,
           user_id: 3,
           text: 'Hipster ispsum ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenea',
-          resource_id: 1
+          // resource_id: 1
         }),
 
 
