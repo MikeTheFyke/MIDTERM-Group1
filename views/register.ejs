@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <title>re.SOURCE</title>
+    <title>re.SOURCE - Register</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -20,8 +20,16 @@
   </head>
 
   <body>
-    <form class="form-inline block" action="/index" method="POST">
+     <form action="/register" method="POST">
       <%- include partials/_header.ejs %>
+      <div class="register-container">
+        <h1 class="register-heading">Register</h1>
+        <label>name<input type="text" placeholder="Please enter your name." name="name"/></label>
+        <label>email<input type="text" placeholder="Please enter an email." name="email"/></label>
+        <label>username<input type="text" placeholder="Please enter a username." name="username"/></label>
+        <label>password<input type="password" placeholder="Please enter a password." name="password"/></label>
+        <button class="register" data-open="register">Register</button>
+      </div>
       </form>
   </body>
 </html>
