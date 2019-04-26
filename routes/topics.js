@@ -26,7 +26,7 @@ module.exports = (knex) => {
   router.put("/:id", (req, res) => {
     const updateTopics = {
             id: req.params.id,
-            title req.body.title
+            title: req.body.title
           };
 
     knex("topics")
@@ -53,7 +53,7 @@ module.exports = (knex) => {
 
   // get topic
   router.get("/:id", (req, res) => {
-  }
+  })
 
 
   return router;
