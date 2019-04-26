@@ -66,7 +66,7 @@ module.exports = (knex) => {
   router.put("/login", (req, res) => {
   	const {user_name, password} = req.body;
   	knex
-  	  .select(*)
+  	  .select("*")
   	  .from("users")
   	  .where('user_name', user_name) 	  
   	  .then((targetUser) => {
@@ -76,9 +76,9 @@ module.exports = (knex) => {
   	  	// console.log(targetUser[0]);
   	  	else if (password === targetUser[0].password){
   	  		//learning authentication on Friday
-  	  		knex("users")
-  	  		  .where('user_name', user_name)
-  	  		  .
+  	  		// knex("users")
+  	  		//   .where('user_name', user_name)
+  	  		//   .
   	  	}
 
   	  })
@@ -89,7 +89,7 @@ module.exports = (knex) => {
   })
 
 
-app.post('/login', function (req, res) {
+router.post('/login', function (req, res) {
  let foundUser = undefined;
   for(let i = 0; i < Object.keys(users).length; i++){
    if((req.body.email == users[Object.keys(users)[i]]['email'])){
