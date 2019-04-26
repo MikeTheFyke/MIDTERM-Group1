@@ -22,6 +22,7 @@
   <body>
          <%- include partials/_header.ejs %>
     <form class="form-inline block" action="/index" method="POST">
+
             <div class="new_resource_container">
               <input type="text" placeholder="Title" name="title"/>
               <input type="text" placeholder="URL" name="url"/>
@@ -37,5 +38,15 @@
             </div>
             <button class="button mark">button</button>
         </form>
+
+    </form>
+        <div class="dropdown_options">
+            <span>Pick a Topic</span>
+              <select name="resource_board">
+
+              </select>
+        </div>
+        <button class="button mark">button</button>
+
   </body>
 </html>
