@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require('express');
+// const app = express();
 const router  = express.Router();
 const bcrypt = require("bcrypt");
 
@@ -18,7 +19,8 @@ module.exports = (knex) => {
   	let id = 0;
   	const {first_name, last_name, user_name, email, password} = req.body;
 
-  if (first_name === "" || last_name === "" || user_=== ""|| email === "" || password === "" ) {
+  if (first_name === "" || last_name === "" || user_name === ""|| email === "" || password === "" ) {
+    console.log("please respond!!!!!");
    return res.status(400).send({ 
    	error: "Incomplete form submitted. Please check fields and try again." 
    })
@@ -29,7 +31,7 @@ module.exports = (knex) => {
   knex
     .select("*")
     .from("users")
-    .where("user_name", username)
+    .where("user_name", user_name)
     .orWhere("email", email)
     .then( (result) => {
     	if(result.length === 0) {
@@ -43,7 +45,7 @@ module.exports = (knex) => {
   	  	  knex("users")
   	  	    .insert(userInfoArray)
   	  	    .then(() => {
-  	  	  	// tokenUserID = req.session.user_id;
+  	  	  	  userID = req.session.token_session_id;
   	  	  	// return res.status(200).send({id, first_name, last_name, username, email, avatar});
   	  	    })
   	  	    .catch((err) => {
