@@ -1,29 +1,25 @@
 <header>
   <div class="head">
     <div class= "nav-left">
-      <a href="/">re.SOURCE</a>
+        <a href="/">re.SOURCE</a>
         <form id="search-bar" method="GET" action="/results">
           <input type="text" placeholder="search" name"search" />
         </form>
     </div>
-  <% let id = true; %>
+  <% let id = false; %>
   <% let username = "Mike"; %>
     <% if (!id) {%>
-    <form method="POST" action = "/login">
-      <p> Would you like to register? <a data-open="register">Register</a></p>
-      <button class="log-button" data-open="login">Login</button>
-      <label>username<input type="text" placeholder="Username" name="username"/></label>
-
+      <p> Would you like to register? <a data-open="register"></a></p>
       <form class="registration" method="POST" action="/register">
-        <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span></button>
-        <h1 class="register-heading">Register</h1>
-        <label>name<input type="text" placeholder="Please enter your name." name="name"/></label>
-        <label>email<input type="text" placeholder="Please enter an email." name="email"/></label>
-        <label>username<input type="text" placeholder="Please enter a username." name="username"/></label>
-        <label>password<input type="password" plaeholder="Please enter a password." name="password"/></label>
-        <button class="register" data-open="register">Register</button>
+          <label>First Name : <input type="text" placeholder="Please enter your name." name="first_name"/></label>
+          <label>Last Name : <input type="text" placeholder="Please enter your name." name="last_name"/></label>
+          <label>Email : <input type="text" placeholder="Please enter an email." name="email"/></label>
+          <label>Username : <input type="text" placeholder="Please enter a username."  name="username"/></label>
+          <label>Password : <input type="password" placeholder="Please enter a password." name="password"/></label>
+          <button class="register" data-open="register">Register</button>
       </form>
+
+
     </form>
       <% } else { %>
         <ul class="logged-in-links">
