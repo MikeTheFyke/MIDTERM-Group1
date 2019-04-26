@@ -7,18 +7,15 @@ const router  = express.Router();
 
  module.exports = (knex) => {
   // getting to new resource page
-  resourceRoute.get("/new_resource")
+  router.get("/new_resource", (req,res )=> {
   const loggedUser = req.session.user_id;
-  if(!loggedUser) {
+  if(false) {
     res.redirect("/main");
   } else {
-    Promise.all ([
-      knex
-        .select('*')
-        .from('users')
-        .where('id',req.session.user_id),
-        knex.select('title').from('topics').where('user_id', loggedUser)
-      ])
+    // Promise.all ([
+
+        knex.select('title').from('topics').where('user_id', 1)
+      // ])
     .then(function(results) {
       console.log("results", results)
 
@@ -32,6 +29,8 @@ const router  = express.Router();
       res.render("new_resource");
       })
     }
-  }
+  })
+  return router;
+}
 
 
