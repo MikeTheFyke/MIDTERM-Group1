@@ -35,7 +35,7 @@ function getHeaderTemplateVars(req){
 //cookie session for midterm project
 app.use(cookieSession({
   name: 'session',
-  keys: ["token_session_id"]
+  keys: ["user_id"]
 }))
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
