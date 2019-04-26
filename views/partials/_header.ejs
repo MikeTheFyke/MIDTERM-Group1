@@ -8,13 +8,14 @@
     </div>
   <% let username = "Mike"; %>
     <% if (true) {%>
-      <div class="login-in-link">
-          <input>
-              <button class="log-button" type="submit">Logout</button>
-            </div>
+          <div class="register-link">
+            <a href="/register">Not as member yet?<br>Would you like to register ?</a>
       </div>
-      <div class="register-link">
-        <a href="/register">Not as member yet?<br>Would you like to register ?</a>
+      <div class="login-in-link">
+          <input type="text" placeholder="Username" name="username"/>
+          <input type="text" placeholder="Password" name="password"/>
+              <button class="log-button" type="submit">Login</button>
+            </div>
       </div>
       <% } else { %>
         <ul class="logged-in-links">
