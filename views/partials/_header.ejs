@@ -8,17 +8,9 @@
     </div>
   <% let id = false; %>
   <% let username = "Mike"; %>
-    <% if (!id) {%>
+    <% if (true) {%>
       <p> Would you like to register? <a data-open="register"></a></p>
-      <form class="registration" method="POST" action="/register">
-          <label>First Name : <input type="text" placeholder="Please enter your name." name="first_name"/></label>
-          <label>Last Name : <input type="text" placeholder="Please enter your name." name="last_name"/></label>
-          <label>Email : <input type="text" placeholder="Please enter an email." name="email"/></label>
-          <label>Username : <input type="text" placeholder="Please enter a username."  name="username"/></label>
-          <label>Password : <input type="password" placeholder="Please enter a password." name="password"/></label>
-          <button class="register" data-open="register">Register</button>
-      </form>
-
+      <button class="register" data-open="register">Register</button>
 
     </form>
       <% } else { %>

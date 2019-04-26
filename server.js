@@ -63,7 +63,12 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-
+//regiser page
+app.get("/register", (req,res) => {
+  let templateVars = {...getHeaderTemplateVars(req), 
+                         user: req.session.token_session_id}
+  res.render("register", templateVars);
+})
 
 //login page
 app.get("/login", (req,res) => {
