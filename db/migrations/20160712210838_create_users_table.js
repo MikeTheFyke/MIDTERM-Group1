@@ -8,6 +8,7 @@ return Promise.all([
         table.string('user_name', 20);
         table.string('email', 50);
         table.string('password', 50);
+        //add token sessionID column ,very IMPORTANT!!!//
     }),
 
 

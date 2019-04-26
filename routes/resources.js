@@ -11,7 +11,8 @@ module.exports = (knex) => {
 	//get resource
 	router.get("/:id", (req, res) => {
       knex
-        .select()	
+        .select('resources.id','resources.url','resources.title','resources.description','users.user_name',
+
 	})
 
 	//create resource
