@@ -30,5 +30,8 @@ header .register-link{
 
 .login-in-link {
   float:right;
+}
 
+.logout {
+float:left;
 }

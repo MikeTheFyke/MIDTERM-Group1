@@ -20,8 +20,17 @@
   </head>
 
   <body>
+         <%- include partials/_header.ejs %>
     <form class="form-inline block" action="/index" method="POST">
-      <%- include partials/_header.ejs %>
-      </form>
+    </form>
+        <div class="dropdown_options">
+            <span>Pick a Topic</span>
+              <select name="resource_board">
+              <% for (let topic = 0; topic < topics.length; topic++) {%>
+              <option><%=topics[topic].title%></option>
+              <%};%>
+              </select>
+        </div>
+        <button class="button mark">button</button>
   </body>
 </html>
