@@ -22,15 +22,20 @@
   <body>
          <%- include partials/_header.ejs %>
     <form class="form-inline block" action="/index" method="POST">
-    </form>
-        <div class="dropdown_options">
-            <span>Pick a Topic</span>
-              <select name="resource_board">
-              <% for (let topic = 0; topic < topics.length; topic++) {%>
-              <option><%=topics[topic].title%></option>
-              <%};%>
-              </select>
-        </div>
-        <button class="button mark">button</button>
+            <div class="new_resource_container">
+              <input type="text" placeholder="Title" name="title"/>
+              <input type="text" placeholder="URL" name="url"/>
+              <input type="text" placeholder="Description" name="description"/>
+              <div class="dropdown_options">
+                <span>Pick a Topic</span>
+                <select name="resource_board">
+                <% for (let topic = 0; topic < topics.length; topic++) {%>
+                <option><%=topics[topic].title%></option>
+                <%};%>
+                </select>
+              </div>
+            </div>
+            <button class="button mark">button</button>
+        </form>
   </body>
 </html>
