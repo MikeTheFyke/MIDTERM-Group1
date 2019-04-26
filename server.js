@@ -25,8 +25,8 @@ const commentsRoutes = require("./routes/comments");
 // const viewRoutes = require("./routes/views");
 
 //cleaning function
-function getHeaderTemplateVars(req){	
-  let user_id = JSON.stringify(req.session["user_id"]);  
+function getHeaderTemplateVars(req){
+  let user_id = JSON.stringify(req.session["user_id"]);
 	return {
 		user_id: req.session["user_id"]
 	}
@@ -67,33 +67,33 @@ app.get("/", (req, res) => {
 });
 
 //regiser page
-app.get("/register", (req,res) => {
-  let templateVars = {...getHeaderTemplateVars(req), 
-                         user: req.session.token_session_id}
-  res.render("register", templateVars);
-})
+// app.get("/register", (req,res) => {
+//   let templateVars = {...getHeaderTemplateVars(req),
+//                          user: req.session.token_session_id}
+//   res.render("register", templateVars);
+// })
 
 //login page
-app.get("/login", (req,res) => {
-  let templateVars = {...getHeaderTemplateVars(req)}; 
-  // , user: req.session.user_id
-  res.render("login", templateVars);
-})
+// app.get("/login", (req,res) => {
+//   let templateVars = {...getHeaderTemplateVars(req)};
+//   // , user: req.session.user_id
+//   res.render("login", templateVars);
+// })
 
 
-app.get("/new_topic", (req,res) => {
-	res.render("new_topic");
-})
+// app.get("/new_topic", (req,res) => {
+// 	res.render("new_topic");
+// })
 
-app.get("/new_resource", (req,res) => {
-	res.render("new_resource");
-})
+// app.get("/new_resource", (req,res) => {
+// 	res.render("new_resource");
+// })
 
 //logout clear cookies
-app.post("/logout", (req,res) => {
-  req.session = null;
-  res.redirect("/index");
-});
+// app.post("/logout", (req,res) => {
+//   req.session = null;
+//   res.redirect("/index");
+// });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
