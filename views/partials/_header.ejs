@@ -1,11 +1,12 @@
 <header>
-  <div class= "nav-left">
-    <a href="/index">Home</a>
-      <form id="search-bar" method="GET" action="/results">
-      <input type="text" placeholder="search" name"search" />
-      </form>
-  </div>
-  <% let id = false; %>
+  <div class="head">
+    <div class= "nav-left">
+      <a href="/">re.SOURCE</a>
+        <form id="search-bar" method="GET" action="/results">
+          <input type="text" placeholder="search" name"search" />
+        </form>
+    </div>
+  <% let id = true; %>
   <% let username = "Mike"; %>
     <% if (!id) {%>
     <form method="POST" action = "/login">
@@ -25,14 +26,17 @@
       </form>
     </form>
       <% } else { %>
-      <form method="POST" action = "/logout">
-        <li><a href="/users/<%=username%>/mywall">Your Walls</a></li>
-        <li><a href="/users/<%=username%>/new_topic">Create A New Wall</a></li>
-        <li><a href="/users/<%=username%>/new_resource">Create A New Link</a></li>
-        <li><a href="/users/<%=username%>">Loggin in as:</a></li>
-        <button class="log-button" type="submit">Logout</button>
-      </form>
+        <ul class="logged-in-links">
+            <a href="/my_profile">Your Walls</a>
+            <a href="/new_topic">Create A New Wall</a>
+            <a href="/new_resource">Create A New Link</a>
+        </ul>
+            <div class="logout">
+              <p id="logged-in-message">Logged in as : <%=username%></p>
+              <button class="log-button" type="submit">Logout</button>
+            </div>
     <% } %>
+    </div>
 </header>
 
 
