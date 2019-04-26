@@ -21,3 +21,7 @@ body h1 {
 .register-container label{
   padding:15px;
 }
+
+.new_resource_container {
+  margin-top: 160px;
+}
