@@ -15,13 +15,14 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-// Seperated Routes for each Resource
+// Seperated Routes for each database tables
 const usersRoutes = require("./routes/users");
 const resourcesRoutes   = require("./routes/resources");
 const categoriesRoutes  = require("./routes/topics");
 const ratesRoutes       = require("./routes/ratings");
 const commentsRoutes = require("./routes/comments");
 
+// const viewRoutes = require("./routes/views");
 
 //cleaning function
 function getHeaderTemplateVars(req){	
@@ -57,6 +58,8 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+// app.use("/", viewRoutes());
+//finish the rest
 
 // main page
 app.get("/", (req, res) => {
@@ -76,6 +79,7 @@ app.get("/login", (req,res) => {
   // , user: req.session.user_id
   res.render("login", templateVars);
 })
+
 
 app.get("/new_topic", (req,res) => {
 	res.render("new_topic");
