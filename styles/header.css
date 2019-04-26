@@ -1,0 +1,29 @@
+header .head {
+position: fixed;
+color:#e8fdff;
+background-color:lightblue;
+width:100%;
+height:100px;
+padding-right:2em;
+padding-left:2em;
+z-index: 1;
+}
+
+.nav-left{
+  width:60%;
+  margin:0;
+}
+
+#logged-in-message, .logged-button{
+    display:inline-block;
+    margin:0;
+    padding:0;
+}
+
+
+.logged-in-links{
+  }
+
+header .register-link{
+  float:right;
+}
