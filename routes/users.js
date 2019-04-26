@@ -47,6 +47,7 @@ module.exports = (knex) => {
   	  	    .then(() => {
   	  	  	  userID = req.session.token_session_id;
   	  	  	// return res.status(200).send({id, first_name, last_name, username, email, avatar});
+              res.redirect("/main");
   	  	    })
   	  	    .catch((err) => {
   	  	  	  console.log("userInfoArray doesn't insert inside users table"); throw err });

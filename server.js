@@ -35,7 +35,7 @@ function getHeaderTemplateVars(req){
 //cookie session for midterm project
 app.use(cookieSession({
   name: 'session',
-  keys: ["token_session_id"]
+  keys: ["user_id"]
 }))
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -56,14 +56,28 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+"/api/users/register"
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/resources", resourcesRoutes(knex));
 // app.use("/", viewRoutes());
 //finish the rest
 
 // main page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/main", (req, res) => {
+  if (req.session.user_id) {
+  knex
+    .select('*')
+    .from('users')
+    .where('id', req.session.userID)
+    .then((userInfo) => {
+      let templateVars = userInfo[0];
+      return res.render('index', templateVars);
+    });
+  } else {
+    let templateVars = { id: req.session.userID };
+    return res.render('index', templateVars);
+  }
 });
 
 //regiser page
