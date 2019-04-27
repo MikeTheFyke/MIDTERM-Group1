@@ -19,9 +19,24 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
+<body style="font-size:20px; padding:50px;">
+
+
+
          <%- include partials/_header.ejs %>
-    <form class="form-inline block" action="/index" method="POST">
-      </form>
-  </body>
+
+<ul class="templog">
+  <form method="PUT" action="/login" >
+     <li>Email <input name="email" type ="email" placeholder="Enter Email"></input></li>
+     <li>Password <input name="password" type ="password" placeholder="Enter Password"></input></li>
+
+     <button type="submit">Login</button>
+
+  </form>
+
+</ul>
+</body>
 </html>
+
+
+

@@ -25,3 +25,8 @@ body h1 {
 .new_resource_container {
   margin-top: 160px;
 }
+
+.templog {
+  margin-top: 180px;
+  background-color: pink;
+}

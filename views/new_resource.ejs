@@ -21,7 +21,7 @@
 
   <body>
          <%- include partials/_header.ejs %>
-    <form class="form-inline block" action="/index" method="POST">
+    <form class="form-inline block" action="/api/resources/new_resource" method="POST">
 
             <div class="new_resource_container">
               <input type="text" placeholder="Title" name="title"/>
@@ -30,7 +30,7 @@
               <div class="dropdown_options">
                    <span>Pick a Topic</span>
           <div class="dropdown_options">
-              <select name="link_topic">
+              <select name="resource_topic">
                 <option>movies</option>
                 <option>food</option>
                 <option>music</option>
