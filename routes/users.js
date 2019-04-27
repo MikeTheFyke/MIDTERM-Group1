@@ -73,8 +73,10 @@ module.exports = (knex) => {
               for (let i = 0; i < rows.length; i++) {
         if (user_name === rows[i].user_name && bcrypt.compareSync(password, rows[i].password) === true) {
           req.session.user_id = rows[i].id;
-          console.log("MATCH");
-          return res.redirect("/");
+          // console.log("req session user id", req.session.user_id);
+          // return res.redirect("/");
+          return res.redirect(`/users/${req.session.user_id}`);
+
         }
       }
       return res.status(403).send("HTTP 403 - NOT FOUND: USERNAME OR PASSWORD INCORRECT!").end();

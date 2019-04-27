@@ -78,8 +78,10 @@ app.get("/", (req, res) => {
 
       return res.render('index', templateVars);
     });
+
   } else {
-    return res.redirect('index');
+      let templateVars = {user_name: false};
+      return res.render('login',templateVars);
   }
 });
 // LOGIN PAGE GET REQUEST
@@ -125,7 +127,7 @@ app.get("/", (req, res) => {
   app.post("/logout", (req, res) => {
     console.log("logging out!");
   req.session = null;
-  return res.render("welcome");
+  return res.render("/");
 });
 
 
