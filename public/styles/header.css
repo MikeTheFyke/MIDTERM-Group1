@@ -11,29 +11,35 @@ z-index: 1;
 }
 
 .nav-left{
-
   width:30%;
   margin:0;
   display:inline-block;
   float:left;
 }
 
-#logged-in-message, .logged-button{
-    display:inline-block;
+.logo{
+    margin:10px 0px;
+    height:50px;
+    width:50px;
+}
+.nav-left a{
+   color: rgb(230, 0, 35);
+}
+
+
+#logged-in-message,{
     margin:0;
     padding:0;
+    margin-bottom:0px;
+}
+
+.logout p{
+  margin-bottom:0px;
 }
 
 
 .logged-in-links{
-    margin: 0;
-    padding: 0px 10px;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+float:right;
 }
 
 .register-link{
@@ -46,4 +52,23 @@ z-index: 1;
 
 .logout {
 float:right;
+}
+
+.log-button{
+    border: 0px;
+    height: 36px;
+    display: inline-block;
+    border-radius: 4px;
+    -webkit-font-smoothing: antialiased;
+    padding: 0px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(230, 0, 35);
+    color: rgb(255, 255, 255);
+    width: 90%;
 }
