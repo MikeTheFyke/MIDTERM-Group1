@@ -33,6 +33,8 @@ return Promise.all([
         table.string('title', 50);
         table.string('description', 250);
         table.integer('user_id').references('users.id').onDelete('cascade');
+        table.integer('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
+
     }),
        knex.schema.createTable('comments', function(table){
         table.increments();
@@ -42,15 +44,13 @@ return Promise.all([
 
     }),
 
-     knex.schema.createTable('resources_info', function(table){
+     knex.schema.createTable('likes_info', function(table){
         table.increments();
-        table.integer('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
         table.integer('resource_id').unsigned().index().references('resources.id').onDelete('cascade');
         table.integer('user_id').unsigned().index().references('users.id').onDelete('cascade');
-        table.integer('rating_id').unsigned().index().references('ratings.id').onDelete('cascade');
         table.boolean('liked');
     })
-
+     // added like table and removed redundant foreign keys because they were already in their respective tables//
 
 ])
 }
@@ -58,12 +58,12 @@ return Promise.all([
 exports.down = function(knex, Promise) {
    return Promise.all([
 
-       knex.schema.dropTable('resources_info'),
-       knex.schema.dropTable('comments'),
-       knex.schema.dropTable('topics'),
-       knex.schema.dropTable('ratings'),
-       knex.schema.dropTable('resources'),
-       knex.schema.dropTable('users')
+    knex.schema.dropTable('likes_info'),
+    knex.schema.dropTable('comments'),
+    knex.schema.dropTable('ratings'),
+    knex.schema.dropTable('resources'),
+    knex.schema.dropTable('topics'),
+    knex.schema.dropTable('users')
 
 
 
