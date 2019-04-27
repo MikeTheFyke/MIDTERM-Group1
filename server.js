@@ -85,49 +85,88 @@ app.get("/", (req, res) => {
   }
 });
 // LOGIN PAGE GET REQUEST
-  app.get("/login", (req,res )=> {
-    if (req.session.user_id) {
-  knex
-    .select('*')
-    .from('users')
-    .where('id', req.session.user_id)
-    .then((userInfo) => {
-      console.log("user info contains", userInfo[0].user_name);
-      let templateVars = {user_name: userInfo[0].user_name};
-      //will redirect if logged in to the user's wall,therefore need to create
-      // user's wall get request to finish the route
-      return res.redirect('index', templateVars);
-    });
-  // const loggedUser = req.session.user_id;
-  // if(loggedUser) {
-  //   res.redirect("/main");
-  } else {
-      let templateVars = {user_name: false};
+  // app.get("/login", (req,res )=> {
+  //   if (req.session.user_id) {
+  // knex
+  //   .select('*')
+  //   .from('users')
+  //   .where('id', req.session.user_id)
+  //   .then((userInfo) => {
+  //     console.log("user info contains", userInfo[0].user_name);
+  //     let templateVars = {user_name: userInfo[0].user_name};
+  //     //will redirect if logged in to the user's wall,therefore need to create
+  //     // user's wall get request to finish the route
+  //     return res.redirect('index', templateVars);
+  //   });
+  // // const loggedUser = req.session.user_id;
+  // // if(loggedUser) {
+  // //   res.redirect("/main");
+  // } else {
+  //     let templateVars = {user_name: false};
 
-        res.render("login",templateVars);
-      };
+  //       res.render("login",templateVars);
+  //     };
 
-  });
+  // });
 
   // GET REGISTER PAGE
+  //dont need no get register route since we got the header to register//
 
-  app.get("/register", (req,res )=> {
-  const loggedUser = req.session.user_id;
-  if(loggedUser) {
-//when user registers redirect them to the user's wall//
-    res.redirect("/main");
-  } else {
-      let templateVars = {user_name: false};
-      res.render("register",templateVars);
-      };
+//   app.get("/register", (req,res )=> {
+//   const loggedUser = req.session.user_id;
+//   if(loggedUser) {
+// //when user registers redirect them to the user's wall//
+//     res.redirect("/main");
+//   } else {
+//       let templateVars = {user_name: false};
+//       res.render("register",templateVars);
+//       };
 
-  });
+//   });
+
+
+app.get("/users/:user_id", (req,res) => {
+    console.log("user's wall!!!!!!");
+      knex.select('*').from('users')
+    .join('topics',{'users.id' : 'topic.user_id'})
+    .where('user_id', req.session.user_id)
+    .then(function(results) {
+      console.log("userpage result",results);
+      if (results[0] === undefined) {
+        knex.select('*')
+          .from('users')
+          .where('id', req.session.user_id)
+          .then(function(results) {
+            const user = results[0];
+            const template = {
+              full_name: user.full_name,
+              email: user.email,
+              id: req.session.user_id,
+              username: user.user_name,
+            }
+            return res.render('my_wall', template);
+          });
+      } else {
+        const walls = results[0];
+        const templateVars = {
+          // full_name: walls.full_nam••••e,
+          email: walls.email,
+          avatar: walls.avatar,
+          id: req.session.userid,
+          date: walls.create_date,
+          username: walls.username,
+          title: walls.title
+        }
+        res.render('account_page', templateVars);
+      }
+    });
+    });
 
   // LOGOUT ROUTE
   app.post("/logout", (req, res) => {
     console.log("logging out!");
   req.session = null;
-  return res.render("/");
+  return res.redirect("/");
 });
 
 
