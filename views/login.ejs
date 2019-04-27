@@ -26,8 +26,8 @@
          <%- include partials/_header.ejs %>
 
 <ul class="templog">
-  <form method="PUT" action="/login" >
-     <li>Email <input name="email" type ="email" placeholder="Enter Email"></input></li>
+  <form method="POST" action="/api/users/login" >
+     <li>Username <input name="user_name" type ="text" placeholder="Enter Username"></input></li>
      <li>Password <input name="password" type ="password" placeholder="Enter Password"></input></li>
 
      <button type="submit">Login</button>

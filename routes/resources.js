@@ -29,7 +29,7 @@ const router  = express.Router();
       res.render("new_resource");
       })
     }
-  }
+  })
   router.post("/new_resource", function (req, res) {
     console.log("tryna post");
     if (!req.body) {
@@ -121,8 +121,8 @@ const router  = express.Router();
 //     .send('password does not match');
 //   }
 
-  return router;
-}
+//   return router;
+// }
 
 
 
