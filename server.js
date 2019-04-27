@@ -59,6 +59,7 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
+
 //finish the rest
 
 
@@ -70,11 +71,12 @@ app.get("/", (req, res) => {
     .from('users')
     .where('id', req.session.user_id)
     .then((userInfo) => {
+      console.log("user info contains", userInfo);
       let templateVars = userInfo[0];
       return res.render('index', templateVars);
     });
   } else {
-    let templateVars = { id: req.session.userid };
+    let templateVars = { id: req.session.user_id};
     return res.render('index', templateVars);
   }
 });
