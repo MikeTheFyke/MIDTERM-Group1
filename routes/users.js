@@ -52,6 +52,8 @@ module.exports = (knex) => {
             });
         });
     });
+    });
+
 
 
   // AFTER LOGIN NEED TO WORK ON CREATE NEW RESOURCE*****
@@ -59,16 +61,18 @@ module.exports = (knex) => {
 
 
   //login post!!!!
-  router.put("/login", (req, res) => {
+  router.post("/login", (req, res) => {
+    console.log("logged in bud!", req.body.user_name);
   	const {user_name, password} = req.body;
   	knex
   	  .select("*")
   	  .from("users")
-  	  // .where('user_name', user_name)
-  	  .then((result) => {
-              for (let i = 0; i < results.length; i++) {
-        if (req.body.username === results[i].username && bcrypt.compareSync(req.body.password, results[i].password) === true) {
-          req.session.userid = results[i].id;
+  	  // .where({'user_name': req.body.user_name})
+  	  .then((rows) => {
+        // console.log("what is result", rows);
+              for (let i = 0; i < rows.length; i++) {
+        if (user_name === rows[i].user_name && bcrypt.compareSync(password, rows[i].password) === true) {
+          req.session.user_id = rows[i].id;
           console.log("MATCH");
           return res.redirect("/");
         }
@@ -78,14 +82,9 @@ module.exports = (knex) => {
 
   	  });
   });
-
-
-
-
-
-
-
-})
   return router;
 
+
 }
+
+
