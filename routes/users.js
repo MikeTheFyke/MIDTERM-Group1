@@ -6,9 +6,9 @@ const router  = express.Router();
 const bcrypt = require("bcrypt");
 
 //helper function
-function generateRandomString() {
-  return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-}
+// function generateRandomString() {
+//   return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+// }
 
 
 
@@ -42,7 +42,7 @@ module.exports = (knex) => {
             .from('users')
             .where('user_name', req.body.user_name)
             .then((results) => {
-            //   console.log("results 0", results[0]);
+              console.log("results 0", results[0]);
               req.session.user_id = results[0].id;
               knex("topics")
                 .insert({user_id: req.session.user_id, title: 'First Wall'})
