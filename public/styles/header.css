@@ -6,12 +6,16 @@ width:100%;
 height:auto;
 padding-right:2em;
 padding-left:2em;
+padding-bottom:1em;
 z-index: 1;
 }
 
 .nav-left{
+
   width:30%;
   margin:0;
+  display:inline-block;
+  float:left;
 }
 
 #logged-in-message, .logged-button{
@@ -22,10 +26,17 @@ z-index: 1;
 
 
 .logged-in-links{
-
+    margin: 0;
+    padding: 0px 10px;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-header .register-link{
+.register-link{
   float:right;
 }
 
@@ -34,5 +45,5 @@ header .register-link{
 }
 
 .logout {
-float:left;
+float:right;
 }
