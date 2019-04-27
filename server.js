@@ -65,18 +65,21 @@ app.use("/api/resources", resourcesRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+    console.log("req session user id", req.session.user_id);
+
   if (req.session.user_id) {
   knex
     .select('*')
     .from('users')
     .where('id', req.session.user_id)
     .then((userInfo) => {
-      console.log("user info contains", userInfo);
-      let templateVars = userInfo[0];
+      console.log("user info contains", userInfo[0].user_name);
+      let templateVars = {user_name: userInfo[0].user_name};
       return res.render('index', templateVars);
     });
   } else {
-    let templateVars = { id: req.session.user_id};
+    let templateVars = { user_id: req.session.user_id};
+
     return res.render('index', templateVars);
   }
 });

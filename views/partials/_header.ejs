@@ -6,8 +6,7 @@
          <input type="text" placeholder="search" name"search" />
        </form>
    </div>
-   <% let user_id = true %>
-   <% if (!user_id) {%>
+   <% if (!user_name) {%>
          <div class="register-link">
            <a href="/register">Not as member yet?<br>Would you like to register ?</a>
      </div>
@@ -25,6 +24,7 @@
            </div>
            <div class="logout">
              <p id="logged-in-message">Logged in as :
+              <%=  user_name %>
 
               </p>
              <button class="log-button" type="submit">Logout</button>
