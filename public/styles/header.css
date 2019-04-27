@@ -8,6 +8,7 @@ padding-right:2em;
 padding-left:2em;
 padding-bottom:1em;
 z-index: 1;
+top:0;
 }
 
 .nav-left{
@@ -15,7 +16,6 @@ z-index: 1;
   margin:0;
   display:inline-block;
   float:left;
-
 }
 
 .logo{
@@ -24,7 +24,7 @@ z-index: 1;
     width:50px;
 }
 .nav-left a{
-   color: rgb(230, 0, 35);
+  color: rgb(230, 0, 35);
 }
 
 
