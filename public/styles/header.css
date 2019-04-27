@@ -8,6 +8,7 @@ padding-right:2em;
 padding-left:2em;
 padding-bottom:1em;
 z-index: 1;
+top:0;
 }
 
 .nav-left{
@@ -23,35 +24,25 @@ z-index: 1;
     width:50px;
 }
 .nav-left a{
-   color: rgb(230, 0, 35);
+  color: rgb(230, 0, 35);
 }
 
 
-#logged-in-message,{
+#logged-in-message{
     margin:0;
     padding:0;
     margin-bottom:0px;
+    color: rgb(230, 0, 35);
 }
-
-.logout p{
-  margin-bottom:0px;
-}
-
 
 .logged-in-links{
 float:right;
 }
 
-.register-link{
-  float:right;
-}
-
-.login-in-link {
-  float:right;
-}
-
 .logout {
-float:right;
+  margin-top: 10px;
+  float:right;
+  text-align: center;
 }
 
 .log-button{
@@ -70,5 +61,5 @@ float:right;
     text-align: center;
     background-color: rgb(230, 0, 35);
     color: rgb(255, 255, 255);
-    width: 90%;
+    width: 60%;
 }
