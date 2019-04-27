@@ -103,6 +103,13 @@ app.get("/", (req, res) => {
 
   });
 
+  // LOGOUT ROUTE
+  app.post("/logout", (req, res) => {
+    console.log("logging out!");
+  req.session = null;
+  return res.redirect("/");
+});
+
 
 
 app.listen(PORT, () => {
