@@ -1,4 +1,38 @@
 <header>
+<<<<<<< HEAD
+  <div class="head">
+    <div class= "nav-left">
+        <img class="logo" src="/images/recycle.png">
+        <a href="/">re.SOURCE</a>
+        <form id="search-bar" method="GET" action="/results">
+          <input type="text" placeholder="search" name"search" />
+        </form>
+    </div>
+    <% let user_id = true %>
+  <% let username = "Mike"; %>
+    <% if (!user_id) {%>
+          <div class="register-link">
+            <a href="/register">Not as member yet?<br>Would you like to register ?</a>
+      </div>
+      <div class="login-in-link">
+          <input type="text" placeholder="Username" name="username"/>
+          <input type="text" placeholder="Password" name="password"/>
+              <button class="log-button" type="submit">Login</button>
+            </div>
+      </div>
+      <% } else { %>
+            <div class="logout">
+              <p id="logged-in-message">Logged in as : <%=username%></p>
+              <button class="log-button" type="submit">Logout</button>
+            </div>
+            <div class="logged-in-links">
+              <a href="/my_profile">Your Walls</a>
+              <a href="/new_topic">Create A New Wall</a>
+              <a href="/api/resources/new_resource">Create A New Link</a>
+            </div>
+    <% } %>
+    </div>
+=======
 <div class="head">
    <div class= "nav-left">
        <a href="/">re.SOURCE</a>
@@ -32,6 +66,7 @@
    <% } %>
    </div>
 
+>>>>>>> de1cca2ef60270d3c52e82ad81cb00db7fbf41c2
 </header>
 
 
