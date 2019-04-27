@@ -24,28 +24,20 @@
     <form class="form-inline block" action="/index" method="POST">
 
             <div class="new_resource_container">
-              <input type="text" placeholder="Title" name="title"/>
-              <input type="text" placeholder="URL" name="url"/>
-              <input type="text" placeholder="Description" name="description"/>
-              <div class="dropdown_options">
-                   <span>Pick a Topic</span>
-          <div class="dropdown_options">
+              <h1>Create your re.SOURCE</h1>
+              <input type="text" placeholder="Title" name="title" maxlength="50"/>
+              <input type="text" placeholder="URL" name="url" maxlength="50"/>
+              <textarea type="text" placeholder="Description" name="description" maxlength="250"/></textarea>
+                   <label>Select a Topic</label>
+            <div class="dropdown_options">
               <select name="link_topic">
                 <option>movies</option>
                 <option>food</option>
                 <option>music</option>
               </select>
-          </div>
-
-              </div>
-            <button class="button mark">New Resource</button>
-
+              <button class="button mark">New Resource</button>
             </div>
-
+            </div>
     </form>
-<<<<<<< HEAD
-=======
-
->>>>>>> db9e3689b4d1d7d962395ec7bd98cec47227a29a
   </body>
 </html>

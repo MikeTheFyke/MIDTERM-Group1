@@ -19,15 +19,15 @@
             </div>
       </div>
       <% } else { %>
-                 <div class="logout">
+            <div class="logged-in-links">
+              <a href="/my_profile">Your Walls</a>
+              <a href="/new_topic">Create A New Wall</a>
+              <a href="/api/resources/new_resource">Create A New Link</a>
+            </div>
+            <div class="logout">
               <p id="logged-in-message">Logged in as : <%=username%></p>
               <button class="log-button" type="submit">Logout</button>
             </div>
-        <ul class="logged-in-links">
-            <a href="/my_profile">Your Walls</a>
-            <a href="/new_topic">Create A New Wall</a>
-            <a href="/api/resources/new_resource">Create A New Link</a>
-        </ul>
     <% } %>
     </div>
 </header>
