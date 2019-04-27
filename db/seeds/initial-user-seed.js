@@ -40,27 +40,27 @@ exports.seed = function(knex, Promise) {
           title: 'movies'
         }),
 
-        // knex('ratings').insert({
-        //   // id: 1,
-        //   rate: 0
-        // }),
-        // knex('ratings').insert({
-        //   // id: 2,
-        //   rate: 1
-        // }),
+        knex('ratings').insert({
+          // id: 1,
+          rate: 0
+        }),
+        knex('ratings').insert({
+          // id: 2,
+          rate: 1
+        }),
 
-        // knex('ratings').insert({
-        //   // id: 4,
-        //   rate: 3
-        // }),
-        // knex('ratings').insert({
-        //   // id: 5,
-        //   rate: 4
-        // }),
-        // knex('ratings').insert({
-        //   id: 6,
-        //   rate: 5
-        // }),
+        knex('ratings').insert({
+          // id: 4,
+          rate: 3
+        }),
+        knex('ratings').insert({
+          // id: 5,
+          rate: 4
+        }),
+        knex('ratings').insert({
+          id: 6,
+          rate: 5
+        }),
 
         knex('resources').insert({
           id: 1,
@@ -94,12 +94,12 @@ exports.seed = function(knex, Promise) {
         //   text: 'Great dude! adipiscing elit. Aenean commodo ligula eget dolor. .',
         //   resource_id: 2,
         // }),
-        knex('comments').insert({
-          id: 2,
-          user_id: 2,
-          text: ':( Meh,ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. C',
-          resource_id: 3,
-        }),
+        // knex('comments').insert({
+        //   id: 2,
+        //   user_id: 2,
+        //   text: ':( Meh,ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. C',
+        //   resource_id: 3,
+        // }),
         knex('comments').insert({
           id: 3,
           user_id: 2,

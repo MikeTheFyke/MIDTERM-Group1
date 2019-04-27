@@ -5,9 +5,9 @@ return Promise.all([
         table.increments();
         table.string('first_name', 50);
         table.string('last_name', 50);
-        table.string('user_name', 20);
-        table.string('email', 50);
-        table.string('password', 50);
+        table.string('user_name', 50);
+        table.string('email', 200);
+        table.string('password');
         //add token sessionID column ,very IMPORTANT!!!//
     }),
 

@@ -61,39 +61,47 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
 //finish the rest
 
-// main page
+
+// Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.session.user_id) {
+  knex
+    .select('*')
+    .from('users')
+    .where('id', req.session.user_id)
+    .then((userInfo) => {
+      let templateVars = userInfo[0];
+      return res.render('index', templateVars);
+    });
+  } else {
+    let templateVars = { id: req.session.userid };
+    return res.render('index', templateVars);
+  }
 });
+// LOGIN PAGE GET REQUEST
+  app.get("/login", (req,res )=> {
+  const loggedUser = req.session.user_id;
+  if(loggedUser) {
+    res.redirect("/main");
+  } else {
+        res.render("login");
+      };
 
-//regiser page
-// app.get("/register", (req,res) => {
-//   let templateVars = {...getHeaderTemplateVars(req),
-//                          user: req.session.token_session_id}
-//   res.render("register", templateVars);
-// })
+  });
 
-//login page
-// app.get("/login", (req,res) => {
-//   let templateVars = {...getHeaderTemplateVars(req)};
-//   // , user: req.session.user_id
-//   res.render("login", templateVars);
-// })
+  // GET REGISTER PAGE
+
+  app.get("/register", (req,res )=> {
+  const loggedUser = req.session.user_id;
+  if(loggedUser) {
+    res.redirect("/main");
+  } else {
+        res.render("register");
+      };
+
+  });
 
 
-// app.get("/new_topic", (req,res) => {
-// 	res.render("new_topic");
-// })
-
-// app.get("/new_resource", (req,res) => {
-// 	res.render("new_resource");
-// })
-
-//logout clear cookies
-// app.post("/logout", (req,res) => {
-//   req.session = null;
-//   res.redirect("/index");
-// });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

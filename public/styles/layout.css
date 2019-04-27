@@ -67,3 +67,8 @@ text-align:center;
 .new_resource_container label{
   margin:5px;
 }
+
+.templog {
+  margin-top: 180px;
+  background-color: pink;
+}
