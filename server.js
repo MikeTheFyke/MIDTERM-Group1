@@ -65,28 +65,46 @@ app.use("/api/resources", resourcesRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+    console.log("req session user id", req.session.user_id);
+
   if (req.session.user_id) {
   knex
     .select('*')
     .from('users')
     .where('id', req.session.user_id)
     .then((userInfo) => {
-      console.log("user info contains", userInfo);
-      let templateVars = userInfo[0];
+      console.log("user info contains", userInfo[0].user_name);
+      let templateVars = {user_name: userInfo[0].user_name};
+
       return res.render('index', templateVars);
     });
+
   } else {
-    let templateVars = { id: req.session.user_id};
-    return res.render('index', templateVars);
+      let templateVars = {user_name: false};
+      return res.render('login',templateVars);
   }
 });
 // LOGIN PAGE GET REQUEST
   app.get("/login", (req,res )=> {
-  const loggedUser = req.session.user_id;
-  if(loggedUser) {
-    res.redirect("/main");
+    if (req.session.user_id) {
+  knex
+    .select('*')
+    .from('users')
+    .where('id', req.session.user_id)
+    .then((userInfo) => {
+      console.log("user info contains", userInfo[0].user_name);
+      let templateVars = {user_name: userInfo[0].user_name};
+      //will redirect if logged in to the user's wall,therefore need to create
+      // user's wall get request to finish the route
+      return res.redirect('index', templateVars);
+    });
+  // const loggedUser = req.session.user_id;
+  // if(loggedUser) {
+  //   res.redirect("/main");
   } else {
-        res.render("login");
+      let templateVars = {user_name: false};
+
+        res.render("login",templateVars);
       };
 
   });
@@ -96,12 +114,21 @@ app.get("/", (req, res) => {
   app.get("/register", (req,res )=> {
   const loggedUser = req.session.user_id;
   if(loggedUser) {
+//when user registers redirect them to the user's wall//
     res.redirect("/main");
   } else {
-        res.render("register");
+      let templateVars = {user_name: false};
+      res.render("register",templateVars);
       };
 
   });
+
+  // LOGOUT ROUTE
+  app.post("/logout", (req, res) => {
+    console.log("logging out!");
+  req.session = null;
+  return res.render("/");
+});
 
 
 
