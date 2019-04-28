@@ -1,0 +1,75 @@
+<header>
+<div class="head">
+  <div class= "nav-left">
+     <img class="logo" src="/images/recycle.png">
+      <a href="/">re.SOURCE</a>
+      <form id="search-bar" method="GET" action="/results">
+        <input type="text" placeholder="search" name"search" />
+      </form>
+  </div>
+  <% if (!user_name) {%>
+     <button class="login-button" onclick="openForm()">Login</button>
+       <div class="login-popup" id="myForm">
+         <form action="/api/users/login" method ="POST" class="login-container">
+           <h1>Login</h1>
+           <label for="user_name"><b>Username</b></label>
+           <input type="text" placeholder="Enter Username" name="user_name" required>
+
+           <label for="passsword"><b>Password</b></label>
+           <input type="password" placeholder="Enter Password" name="password" required>
+
+           <button type="submit" class="btn">Login</button>
+           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+         </form>
+       </div>
+         <script>
+           function openForm() {
+             document.getElementById("myForm").style.display = "block";
+           }
+           function closeForm() {
+             document.getElementById("myForm").style.display = "none";
+           }
+         </script>
+
+     <button class="register-button" onclick="openForm2()">Register</button>
+       <div class="register-popup" id="myForm2">
+         <form action="/api/users/register" method="POST" class="register-container">
+           <h1>Register</h1>
+           <input type="text" placeholder="Enter first name" name="first_name" required>
+           <input type="text" placeholder="Enter last name" name="last_name" required>
+           <input type="text" placeholder="Enter user name" name="user_name" required>
+           <input type="password" placeholder="Enter password" name="password" required>
+           <input type="email" placeholder="Enter Email" name="email" required>
+           <button type="submit" class="btn">Register</button>
+           <button type="button" class="btn cancel" onclick="closeForm2()">Cancel</button>
+         </form>
+       </div>
+         <script>
+           function openForm2() {
+             document.getElementById("myForm2").style.display = "block";
+           }
+           function closeForm2() {
+             document.getElementById("myForm2").style.display = "none";
+           }
+         </script>
+    </div>
+
+    <% } else { %>
+          <div class="logged-in-links">
+            <a href="/my_profile">Your Walls</a>
+            <a href="/new_topic">Create A New Wall</a>
+            <a href="/api/resources/new_resource">Create A New Link</a>
+          </div>
+          <div class="logout">
+            <p id="logged-in-message">Logged in as :
+              <%=user_name%>
+             </p>
+             <form action="/logout" method="POST">
+            <button class="log-button" type="submit">Logout</button>
+            </form>
+
+          </div>
+  <% } %>
+  </div>
+
+</header>
