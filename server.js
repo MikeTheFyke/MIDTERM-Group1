@@ -126,36 +126,38 @@ app.get("/", (req, res) => {
 
 
 app.get("/users/:user_id", (req,res) => {
-    console.log("user's wall!!!!!!");
+    // console.log("user's wall!!!!!!");
       knex.select('*').from('users')
-    .join('topics',{'users.id' : 'topic.user_id'})
-    .where('user_id', req.session.user_id)
+    // .join('topics',{'users.id' : 'topic.user_id'})
+    .where('id', req.session.user_id)
     .then(function(results) {
       console.log("userpage result",results);
+
       if (results[0] === undefined) {
         knex.select('*')
           .from('users')
           .where('id', req.session.user_id)
           .then(function(results) {
-            const user = results[0];
+            const new_user = results[0];
             const template = {
-              full_name: user.full_name,
-              email: user.email,
+              first_name: new_user.first_name,
+              last_name: new_user.last_name,
+              email: new_user.email,
               id: req.session.user_id,
-              username: user.user_name,
+              user_name: new_user.user_name,
             }
             return res.render('my_wall', template);
           });
       } else {
-        const walls = results[0];
+        const old_user = results[0];
         const templateVars = {
-          // full_name: walls.full_nam••••e,
-          email: walls.email,
-          avatar: walls.avatar,
+          // full_name: walls.full_nam••••e
+          first_name: old_user.first_name,
+          last_name: old_user.last_name,
+          email: old_user.email,
           id: req.session.userid,
-          date: walls.create_date,
-          username: walls.username,
-          title: walls.title
+          user_name: old_user.user_name,
+          title: old_user.title
         }
         res.render('account_page', templateVars);
       }

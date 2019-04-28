@@ -44,11 +44,15 @@ module.exports = (knex) => {
             .then((results) => {
               console.log("results 0", results[0]);
               req.session.user_id = results[0].id;
-              knex("topics")
-                .insert({user_id: req.session.user_id, title: 'First Wall'})
-                .then(() => {
+              // .then(() => {
                   return res.redirect(`/users/${req.session.user_id}`);
-                });
+                // })
+               /// this inserts new topics//
+              // knex("topics")
+              //   .insert({user_id: req.session.user_id, title: 'First Wall'})
+              //   .then(() => {
+              //     // return res.redirect(`/users/${req.session.user_id}`);
+              //   });
             });
         });
     });
