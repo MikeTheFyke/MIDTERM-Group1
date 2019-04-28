@@ -57,8 +57,59 @@
     <% } else { %>
           <div class="logged-in-links">
             <a href="/users/:user_id">Your Walls</a>
-            <a href="/new_topic">Create A New Wall</a>
-            <a href="/api/resources/new_resource">Create A New Link</a>
+
+             <button class="register-button" onclick="openForm3()">Create Topic</button>
+       <div class="register-popup" id="myForm3">
+         <form action="/api/users/register" method="POST" class="register-container">
+           <h1>Create New Topic</h1>
+           <input type="text" placeholder="Enter Topic name" name="topic_name" required>
+
+           <button type="submit" class="btn">Create</button>
+           <button type="button" class="btn cancel" onclick="closeForm3()">Cancel</button>
+         </form>
+       </div>
+         <script>
+           function openForm3() {
+             document.getElementById("myForm3").style.display = "block";
+           }
+           function closeForm3() {
+             document.getElementById("myForm3").style.display = "none";
+           }
+         </script>
+
+
+
+       <button class="resource-button" onclick="openForm4()">Create Resource</button>
+       <div class="resource-popup" id="myForm4">
+         <form action="/api/users/register" method="POST" class="resource-container">
+           <h1>Create New Resource</h1>
+           <input type="text" placeholder="Enter Resource name" name="title" required>
+           <input type="text" placeholder="Enter URL" name="url" required>
+           <input type="text" placeholder="Enter Description" name="description" required>
+           <div class="dropdown_options">
+
+           <select name="topics_id">
+                 <option>movies</option>
+                 <option>food</option>
+                  <option>music</option>
+                </select>
+
+          </div>
+          <button type="submit" class="btn">Create</button>
+           <button type="button" class="btn cancel" onclick="closeForm4()">Cancel</button>
+         </form>
+       </div>
+         <script>
+           function openForm4() {
+             document.getElementById("myForm4").style.display = "block";
+           }
+           function closeForm4() {
+             document.getElementById("myForm4").style.display = "none";
+           }
+         </script>
+
+            </div>
+
           </div>
           <div class="logout">
             <p id="logged-in-message">Logged in as :
@@ -73,3 +124,6 @@
   </div>
 
 </header>
+
+
+
