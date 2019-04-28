@@ -18,17 +18,26 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-
   <body>
          <%- include partials/_header.ejs %>
-      <div class="profile-container">
-        <h3> Profile</h3>
-        <h5>First Name: <%=first_name%></h5>
-        <h5>Last Name: <%=last_name%></h5>
-        <h5>Email: <%=email%></h5>
-        <h5>UserID: <%=id%></h5>
-       <a href="/users/:user_id/edit_profile"> <button> Update Profile </button> </a>
+      <div class="editprofile-container">
+        <form action="/api/users/:user_id/edit_profile" method="POST">
+           <label for="first_name"><b>First Name</b></label>
+           <input type="text" placeholder="<%=first_name%>" name="first_name"></input>
 
+           <label for="last_name"><b>Last Name</b></label>
+           <input type="text" placeholder="<%=last_name%>" name="last_name"></input>
+
+           <label for="user_name"><b>Username</b></label>
+           <input type="text" placeholder="<%=user_name%>" name="user_name"></input>
+
+           <label for="email"><b>Email</b></label>
+           <input type="email" placeholder="<%=email%>" name="email"></input>
+
+           <label for="password"><b>Password</b></label>
+           <input type="password" placeholder="<%=password%>" name="password"></input>
+          <button type="submit"> Update Profile </button>
+     </form>
       </div>
 
 

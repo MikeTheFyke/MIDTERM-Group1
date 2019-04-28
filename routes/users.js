@@ -88,45 +88,44 @@ module.exports = (knex) => {
 
   	  });
   });
-  //USER'S PROFILE PAGE WHICH INCLUDES PROFILE INFO AND WALL//
-  // router.get("/users/:user_id", (req,res) => {
-  //   console.log("user's wall!!!!!!");
-  //     knex.select('*').from('users')
-  //   .join('topics',{'users.id' : 'topic.user_id'})
-  //   .where('user_id', req.session.user_id)
-  //   .then(function(results) {
-  //     console.log("userpage result",results);
-  //     if (results[0] === undefined) {
-  //       knex.select('*')
-  //         .from('users')
-  //         .where('id', req.session.user_id)
-  //         .then(function(results) {
-  //           const user = results[0];
-  //           const template = {
-  //             full_name: user.full_name,
-  //             email: user.email,
-  //             id: req.session.user_id,
-  //             username: user.user_name,
-  //           }
-  //           return res.render('my_wall', template);
-  //         });
-  //     } else {
-  //       const walls = results[0];
-  //       const templateVars = {
-  //         // full_name: walls.full_nam••••e,
-  //         email: walls.email,
-  //         avatar: walls.avatar,
-  //         id: req.session.userid,
-  //         date: walls.create_date,
-  //         username: walls.username,
-  //         title: walls.title
-  //       }
-  //       res.render('account_page', templateVars);
-  //     }
-  //   });
-  //   });
+
+//update profile POST request//
+  router.post("/:user_id/edit_profile", (req,res) => {
+    // console.log("updated profile!");
+    const {first_name,last_name,user_name, email, password} = req.body;
+    knex
+      .select("*")
+      .from("users")
+      // .where({'user_name': req.body.user_name})
+      .then((rows) => {
+        // console.log("what is result", rows);
+        knex('users')
+        .where({ id: req.session.user_id})
+        .update({
+                first_name: first_name,
+                last_name: last_name,
+                user_name: user_name,
+                email: email,
+                password: password
+                })
+        .then(() => {
+          return res.redirect(`/users/${req.session.user_id}`);
+
+        })
+      //         for (let i = 0; i < rows.length; i++) {
+      //   if (user_name === rows[i].user_name && bcrypt.compareSync(password, rows[i].password) === true) {
+      //     req.session.user_id = rows[i].id;
+      //     // console.log("req session user id", req.session.user_id);
+      //     // return res.redirect("/");
+      //     return res.redirect(`/users/${req.session.user_id}`);
+
+      //   }
+      // }
+      // return res.status(403).send("HTTP 403 - NOT FOUND: USERNAME OR PASSWORD INCORRECT!").end();
 
 
+      });
+});
 
 
 

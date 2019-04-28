@@ -131,7 +131,7 @@ app.get("/users/:user_id", (req,res) => {
     // .join('topics',{'users.id' : 'topic.user_id'})
     .where('id', req.session.user_id)
     .then(function(results) {
-      console.log("userpage result",results);
+      // console.log("userpage result",results);
 
       if (results[0] === undefined) {
         knex.select('*')
@@ -139,28 +139,55 @@ app.get("/users/:user_id", (req,res) => {
           .where('id', req.session.user_id)
           .then(function(results) {
             const new_user = results[0];
-            const template = {
+            console.log("results for new user", new_user);
+            const templateVars = {
               first_name: new_user.first_name,
               last_name: new_user.last_name,
               email: new_user.email,
               id: req.session.user_id,
               user_name: new_user.user_name,
             }
-            return res.render('account_page', template);
+            return res.render('account_page', templateVars);
           });
       } else {
         const old_user = results[0];
+        // console.log("results inside old user", results);
         const templateVars = {
-          // full_name: walls.full_nam••••e
           first_name: old_user.first_name,
           last_name: old_user.last_name,
           email: old_user.email,
-          id: req.session.userid,
+          id: req.session.user_id,
           user_name: old_user.user_name,
           title: old_user.title
         }
-        res.render('account_page', templateVars);
+        return res.render('account_page', templateVars);
       }
+    });
+    });
+
+// GET edit user profile route
+app.get("/users/:user_id/edit_profile", (req,res) => {
+      knex.select('*').from('users')
+    .where('id', req.session.user_id)
+    .then(function(results) {
+
+        knex.select('*')
+          .from('users')
+          .where('id', req.session.user_id)
+          .then(function(results) {
+            const user = results[0];
+            console.log(user);
+            const templateVars = {
+              first_name: user.first_name,
+              last_name: user.last_name,
+              user_name: user.user_name,
+              email: user.email,
+              id: req.session.user_id,
+              password: user.password
+            }
+            return res.render('edit_profile', templateVars);
+          });
+
     });
     });
 
