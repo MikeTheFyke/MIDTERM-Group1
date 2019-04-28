@@ -21,14 +21,18 @@
 
   <body>
          <%- include partials/_header.ejs %>
-    <form class="form-inline block" action="/index" method="POST">
-      </form>
       <div class="profile-container">
         <h3> Profile</h3>
         <h5><%=first_name%></h5>
         <h5><%=last_name%></h5>
         <h5><%=email%></h5>
         <h5><%=id%></h5>
+      <form class="form-inline block" action="/index" method="POST">
+        <button type ="submit">
+      </form>
+
       </div>
+
+
   </body>
 </html>
