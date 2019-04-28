@@ -18,17 +18,25 @@
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-
   <body>
          <%- include partials/_header.ejs %>
       <div class="editprofile-container">
-        <form action="/" method="POST">
-        <input type="text" placeholder="<%=first_name%>" name="first_name"> First Name</input>
-        <input type="text" placeholder="<%=last_name%>" name="last_name"> Last Name</input>
-        <input type="text" placeholder="<%=user_name%>" name="user_name"> Username</input>
-        <input type="email" placeholder="<%=email%>" name="email"> Email</input>
-        <input type="password" placeholder="<%=password%>" name="password"> Password</input>
-        <button type="submit"> Update Profile </button>
+        <form action="/api/users/:user_id/edit_profile" method="POST">
+           <label for="first_name"><b>First Name</b></label>
+           <input type="text" placeholder="<%=first_name%>" name="first_name"></input>
+
+           <label for="last_name"><b>Last Name</b></label>
+           <input type="text" placeholder="<%=last_name%>" name="last_name"></input>
+
+           <label for="user_name"><b>Username</b></label>
+           <input type="text" placeholder="<%=user_name%>" name="user_name"></input>
+
+           <label for="email"><b>Email</b></label>
+           <input type="email" placeholder="<%=email%>" name="email"></input>
+
+           <label for="password"><b>Password</b></label>
+           <input type="password" placeholder="<%=password%>" name="password"></input>
+          <button type="submit"> Update Profile </button>
      </form>
       </div>
 
