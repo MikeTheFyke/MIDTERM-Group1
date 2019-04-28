@@ -146,7 +146,7 @@ app.get("/users/:user_id", (req,res) => {
               id: req.session.user_id,
               user_name: new_user.user_name,
             }
-            return res.render('my_wall', template);
+            return res.render('account_page', template);
           });
       } else {
         const old_user = results[0];
