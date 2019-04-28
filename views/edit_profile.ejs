@@ -21,14 +21,15 @@
 
   <body>
          <%- include partials/_header.ejs %>
-      <div class="profile-container">
-        <h3> Profile</h3>
-        <h5>First Name: <%=first_name%></h5>
-        <h5>Last Name: <%=last_name%></h5>
-        <h5>Email: <%=email%></h5>
-        <h5>UserID: <%=id%></h5>
-       <a href="/users/:user_id/edit_profile"> <button> Update Profile </button> </a>
-
+      <div class="editprofile-container">
+        <form action="/" method="POST">
+        <input type="text" placeholder="<%=first_name%>" name="first_name"> First Name</input>
+        <input type="text" placeholder="<%=last_name%>" name="last_name"> Last Name</input>
+        <input type="text" placeholder="<%=user_name%>" name="user_name"> Username</input>
+        <input type="email" placeholder="<%=email%>" name="email"> Email</input>
+        <input type="password" placeholder="<%=password%>" name="password"> Password</input>
+        <button type="submit"> Update Profile </button>
+     </form>
       </div>
 
 
