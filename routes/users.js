@@ -93,6 +93,8 @@ module.exports = (knex) => {
   router.post("/:user_id/edit_profile", (req,res) => {
     // console.log("updated profile!");
     const {first_name,last_name,user_name, email, password} = req.body;
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
     knex
       .select("*")
       .from("users")
@@ -106,10 +108,15 @@ module.exports = (knex) => {
                 last_name: last_name,
                 user_name: user_name,
                 email: email,
-                password: password
+                password: hashedPassword
                 })
         .then(() => {
+          if(first_name && last_name && user_name && email && password) {
           return res.redirect(`/users/${req.session.user_id}`);
+        } else {
+          return res.status(403).send(" All Fields Must Be Filled to Update Profile!").end();
+
+        }
 
         })
       //         for (let i = 0; i < rows.length; i++) {
@@ -121,7 +128,6 @@ module.exports = (knex) => {
 
       //   }
       // }
-      // return res.status(403).send("HTTP 403 - NOT FOUND: USERNAME OR PASSWORD INCORRECT!").end();
 
 
       });

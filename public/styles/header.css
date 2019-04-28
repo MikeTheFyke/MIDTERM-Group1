@@ -9,30 +9,31 @@ padding-left:2em;
 padding-bottom:1em;
 z-index: 1;
 top:0;
+left:0;
 }
 
 .nav-left{
- width:30%;
- margin:0;
- display:inline-block;
- float:left;
+width:30%;
+margin:0;
+display:inline-block;
+float:left;
 }
 
 .logo{
-   margin:10px 0px;
-   height:50px;
-   width:50px;
+  margin:10px 0px;
+  height:50px;
+  width:50px;
 }
 .nav-left a{
- color: rgb(230, 0, 35);
+color: rgb(230, 0, 35);
 }
 
 
 #logged-in-message{
-   margin:0;
-   padding:0;
-   margin-bottom:0px;
-   color: rgb(230, 0, 35);
+  margin:0;
+  padding:0;
+  margin-bottom:0px;
+  color: rgb(230, 0, 35);
 }
 
 .logged-in-links{
@@ -40,154 +41,253 @@ float:right;
 }
 
 .logout {
- margin-top: 10px;
- float:right;
- text-align: center;
+margin-top: 10px;
+float:right;
+text-align: center;
 }
 
 .login-button {
- background-color:rgb(230, 0, 35);
- text-align: center;
- border-radius: 4px;
- color: rgb(255, 255, 255);
- font-size: 15px;
- font-weight: bold;
- padding: 10px 20px;
- border: none;
- cursor: pointer;
- opacity: 0.8;
- position: fixed;
- top:10px;
- right: 28px;
- width: 20%;
+background-color:rgb(230, 0, 35);
+text-align: center;
+border-radius: 4px;
+color: rgb(255, 255, 255);
+font-size: 15px;
+font-weight: bold;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+top:10px;
+right: 28px;
+width: 20%;
 }
 
 .login-popup {
- display: none;
- position: fixed;
- bottom: 0;
- right: 15px;
- border: 3px solid #f1f1f1;
- z-index: 9;
+display:none;
+margin-top:10px;
 }
 
 
 .login-container {
-   background-color: rgb(255, 255, 255);
-   border-radius: 8px;
-   position: relative;
-   text-align: center;
-   width: 440px;
-   margin: 160px auto;
-   min-height: initial;
-   box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
-   padding-bottom: 5px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+  width: 440px;
+  margin: 20% auto;
+  min-height: initial;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+  padding-bottom: 5px;
+  margin-top: 25%;
 }
 
-.login-container input[type=text], .form-container input[type=password] {
- width: 100%;
- padding: 15px;
- margin: 5px 0 22px 0;
- border: none;
- background: #f1f1f1;
+.login-container input[type=text], .register-container input[type=password] {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
 }
 
 
-.login-container input[type=text]:focus, .form-container input[type=password]:focus {
- background-color: #ddd;
- outline: none;
+.login-container input[type=text]:focus, .register-container input[type=password]:focus {
+background-color: #ddd;
+outline: none;
 }
 
 .login-container .btn {
- background-color: #4CAF50;
- color: white;
- padding: 16px 20px;
- border: none;
- cursor: pointer;
- width: 100%;
- margin-bottom:10px;
- opacity: 0.8;
+  border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom:10px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgb(230, 0, 35);
+  color: rgb(255, 255, 255);
+  width: 50%;
 }
 
 .login-container .cancel {
- background-color: red;
+   border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom:10px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgb(230, 0, 35);
+  color: rgb(255, 255, 255);
+  width: 50%;
 }
 
 .login-container .btn:hover, .open-button:hover {
- opacity: 1;
+opacity: 1;
 }
 
 .register-button {
- background-color:rgb(230, 0, 35);
- text-align: center;
- border-radius: 4px;
- color: rgb(255, 255, 255);
- font-size: 15px;
- font-weight: bold;
- padding: 10px 20px;
- border: none;
- cursor: pointer;
- opacity: 0.8;
- position: fixed;
- top:60px;
- right: 28px;
- width: 20%
+background-color:rgb(230, 0, 35);
+text-align: center;
+border-radius: 4px;
+color: rgb(255, 255, 255);
+font-size: 15px;
+font-weight: bold;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+top:60px;
+right: 28px;
+width: 20%
 }
 
 .register-popup {
- display:none;
- margin-top:10px;
+display:none;
+margin-top:10px;
 }
 
 
 .register-container {
-   background-color: rgb(255, 255, 255);
-   border-radius: 8px;
-   position: relative;
-   text-align: center;
-   width: 440px;
-   margin: 20% auto;
-   min-height: initial;
-   box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
-   padding-bottom: 5px;
-   margin-top: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+  width: 440px;
+  margin: 20% auto;
+  min-height: initial;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+  padding-bottom: 5px;
+  margin-top: 25%;
 }
 
-.register-container input[type=text], .form-container input[type=password] {
- width: 100%;
- padding: 15px;
- margin: 5px 0 22px 0;
- border: none;
- background: #f1f1f1;
+.register-container input[type=text], .register-container input[type=password] {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
 }
 
 
-.register-container input[type=text]:focus, .form-container input[type=password]:focus {
- background-color: #ddd;
- outline: none;
+.register-container input[type=text]:focus, .register-container input[type=password]:focus {
+background-color: #ddd;
+outline: none;
 }
 
 .register-container .btn {
-   border: 0px;
-   height: 36px;
-   display: inline-block;
-   border-radius: 4px;
-   -webkit-font-smoothing: antialiased;
-   padding: 0px 18px;
-   font-size: 15px;
-   font-weight: bold;
-   outline: none;
-   box-shadow: none;
-   cursor: pointer;
-   margin-top: 10px;
-   margin-bottom:10px;
-   vertical-align: middle;
-   text-align: center;
-   background-color: rgb(230, 0, 35);
-   color: rgb(255, 255, 255);
-   width: 50%;
+  border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom:10px;
+  vertical-align: middle;
+  text-align: center;
+background-color: rgb(230, 0, 35);
+  color: rgb(255, 255, 255);
+  width: 50%;
 }
 
 .register-container .btn:hover, .open-button:hover {
- opacity: 1;
+opacity: 1;
+}
+
+.resources-button {
+background-color:rgb(230, 0, 35);
+text-align: center;
+border-radius: 4px;
+color: rgb(255, 255, 255);
+font-size: 15px;
+font-weight: bold;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+top:20px;
+right: 28px;
+width: 20%
+}
+
+.resources-popup {
+display:none;
+margin-top:10px;
+}
+
+
+.resources-container {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+  width: 440px;
+  margin: 20% auto;
+  min-height: initial;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+  padding-bottom: 5px;
+  margin-top: 25%;
+}
+
+.resources-container input[type=text], .resources-container input[type=password] {
+width: 100%;
+padding: 15px;
+margin: 5px 0 22px 0;
+border: none;
+background: #f1f1f1;
+}
+
+
+.resources-container input[type=text]:focus, .resources-container input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+
+.resources-container .btn {
+  border: 0px;
+  height: 36px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  padding: 0px 18px;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom:10px;
+  vertical-align: middle;
+  text-align: center;
+background-color: rgb(230, 0, 35);
+  color: rgb(255, 255, 255);
+  width: 50%;
+}
+
+.resources-container .btn:hover, .open-button:hover {
+opacity: 1;
 }
