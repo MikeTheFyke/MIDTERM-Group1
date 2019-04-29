@@ -32,7 +32,7 @@ return Promise.all([
         table.string('title', 50);
         table.string('description', 250);
         table.integer('user_id').references('users.id').onDelete('cascade');
-        table.integer('topics_id').unsigned().index().references('topics.id').onDelete('cascade');
+        table.string('topics_id', 250);
 
     }),
        knex.schema.createTable('comments', function(table){
