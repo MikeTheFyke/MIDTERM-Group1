@@ -30,30 +30,34 @@ const router  = express.Router();
       })
     }
   })
-  router.post("/new_resource", function (req, res) {
+
+  //creating a new resource//
+
+  router.post("/:user_id/create_resource", function (req, res) {
     console.log("tryna post");
     if (!req.body) {
     res.status(400).json({ error: 'invalid request: no data in POST body'});
     return;
     }
     // console.log("req.body is", req.body );
-    const {title, description, url, resource_topic} = req.body;
+    const {title, description, url,topics_id} = req.body;
     const user_id = req.session.user_id;
-            console.log("req.session", req.session);
 
 
-    // knex.select('id').from('topics').where('title',req.body.resource_topic)
-    //       .then(function(result) {
-    //         console.log("this is the result",result);
-    //         const topics = result[0].id;
-            //answer topics value should be 3
-            // console.log("user_id", user_id);
+    knex.select('id').from('topics').where('title',topics_id)
+          .then(function(result) {
+            console.log("this is the result",result);
+            const topics = result[0].id;
             knex.insert({
-              user_id:user_id,
-              url:url,
-              title:title,
-              description:description})
-              // .returning('id')
+              title: title,
+              description: description,
+              url: url,
+              topics_id: topics_id,
+              user_id: user_id
+              })
+
+
+
               .into('resources')
               .then(function(result){
               const id = result[0];
@@ -66,63 +70,55 @@ const router  = express.Router();
                 }
               })
             })
+            })
+
+
+
+
+//post request to create new resource ---still neeed it to connect foreign keys
+
+  router.post("/:user_id/create_resource", (req, res) => {
+    // console.log("tryna post a new resource");
+    const {title, description, url,topics_id} = req.body;
+    const user_id = req.session.user_id;
+
+    if(title && description && url && topics_id && user_id){
+      knex("resources")
+        .insert({
+          title: title,
+          description: description,
+          url: url,
+          topics_id: topics_id,
+          user_id: user_id,
+           })
+        .then(() => {
+          // knex
+          //   .select('id')
+          //   .from('users')
+          //   .where('user_name', req.body.user_name)
+          //   .then((results) => {
+          //     console.log("results 0", results[0]);
+              // req.session.user_id = results[0].id;
+
+                  return res.redirect(`/users/${req.session.user_id}`);
+
+
+    })
+    }
+    else {
+      return res.status(400).send("Please fill out all fields!").end();
+    }
+
+    });
+
+
+
+
+
           return router;
           };
 
 
-
-
-
-
-
-//   router.post("/new_resource", function (req, res) {
-
-//     if (!req.body) {
-//     res.status(400).json({ error: 'invalid request: no data in POST body'});
-//     return;
-//     }
-//     const {title, description, url} = req.body;
-//     const user_id = req.session.user_id;
-//     knex.select('id').from('boards').where('title',req.body.link_board)
-//           .then(function(result) {
-//             const board = result[0].id;
-//             knex.insert({user_id:userid, topic_id:topic, url:url, title:title,
-//               description:desc, create_date:knex.fn.now(), color:color}).returning('id')
-//               .into('links').then(function(result){
-//               const id = result[0];
-//               knex.insert({link_id: id, userid: userid}).into('learnt_counters').then((result)=>{
-//                 return knex.insert({link_id: id, board_id: board}).into('boards_links');
-//             }).asCallback(function(err){
-//                 if (err) {
-//                   res.status(500).json({ error: err.message });
-//                 } else {
-//                   res.redirect(`/links/${id}/`);
-//                 }
-//               })
-//             })
-//           })
-//       })
-// });
-
-//  // let foundUser = undefined;
-//  //  for(let i = 0; i < Object.keys(users).length; i++){
-//  //   if((req.body.email == users[Object.keys(users)[i]]['email'])){
-//  //    foundUser = users[Object.keys(users)[i]];
-//  //   }
-//   // }
-//   if(!foundUser){
-//     res.status(403)
-//     .send('email does not exist')
-//   }else if(foundUser && bcrypt.compareSync(req.body.password, foundUser.password)){
-//     req.session.user_id = foundUser['id'];
-//     res.redirect('/urls');
-//   }else{
-//     res.status(403)
-//     .send('password does not match');
-//   }
-
-//   return router;
-// }
 
 
 

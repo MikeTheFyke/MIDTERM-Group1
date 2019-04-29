@@ -5,56 +5,55 @@ const router      = express.Router();
 
 module.exports = (knex) => {
 
-  // create topic
-  router.post("/", (req, res) => {
-    knex('topics').max('id')
-      .then(result => result[0].max + 1)
-      .then( max => {
-        const newTopics = {
-            id: max,
-            title: req.body.title
-          };
+   // when user creates a topic
+  router.post("/create_topic", (req, res) => {
+    const {topic_name} = req.body;
+    const {user_id} = req.session;
+   console.log("PLEASEEEE");
+    //error part
+    if(!req.body) {
+    res.status(400).json({ error: 'invalid request: no data in POST body'});
+    return;
+    }
+    knex('topics')
+          .insert({
+          title: topic_name,
+          user_id: user_id
+           })
+          .then(() =>{
+            return res.redirect(`/users/${req.session.user_id}`);
+          })
 
-        knex("topics")
-          .insert(newTopics)
-          .then(results =>  res.json(newTopics));
-      })
-      .catch(error => res.status(400).json( {error} ));
-  });
+          //toggle back if approach doesn't work
+          // .then(() => {
+          //   console.log("milestone");
+          // knex
+          //   .select('*')
+          //   .from('topics')
+          //   .where('user_id', user_id)
+          //   .then((results) => {
+          //     console.log("we are expecting values from topics", results[0]);
+          //     // user_id = results[0].user_id;
 
-  // update topic
-  router.put("/:id", (req, res) => {
-    const updateTopics = {
-            id: req.params.id,
-            title: req.body.title
-          };
+          //         return res.redirect(`/users/${req.session.user_id}`);
+          //   });
+          // })
 
-    knex("topics")
-      .where('id', req.params.id)
-      .update({
-        description: req.body.title
-      })
-      .then(result => {
-        if(result === 1){ return res.status(200).json( updateTopics ); }
-      })
-      .catch(error => res.status(400).json( {error} ));
-  });
+  // knex.select('*').from('topics')
+  //   .then(function() {
+  //     knex.insert({
+  //       user_id:user_id,
+  //       title:topic_name })
+  //     .returning('*')
+  //       .into('topics').then(function(result) {
+  //     })
+  //   })
 
-  // delete topic
-  router.delete("/:id", (req, res) => {
-    knex("topics")
-      .where('id', req.params.id)
-      .del()
-      .then(result => {
-        if(result === 1){ return res.status(200).json( {success: 'Deleted' }); }
-      })
-      .catch(error => res.status(400).json( {error} ));
-  });
-
-  // get topic
-  router.get("/:id", (req, res) => {
-  })
+  // res.redirect(`/users/${user_id}`);
+})
 
 
-  return router;
+
+return router;
 }
+

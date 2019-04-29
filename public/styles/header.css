@@ -46,6 +46,24 @@ float:right;
 text-align: center;
 }
 
+.create-topic-button {
+background-color:rgb(230, 0, 35);
+text-align: center;
+border-radius: 4px;
+color: rgb(255, 255, 255);
+font-size: 15px;
+font-weight: bold;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+top:10px;
+right: 28px;
+width: 20%;
+}
+
+
 .login-button {
 background-color:rgb(230, 0, 35);
 text-align: center;
@@ -217,7 +235,7 @@ background-color: rgb(230, 0, 35);
 opacity: 1;
 }
 
-.resources-button {
+.resource-button {
 background-color:rgb(230, 0, 35);
 text-align: center;
 border-radius: 4px;
@@ -229,18 +247,18 @@ border: none;
 cursor: pointer;
 opacity: 0.8;
 position: fixed;
-top:20px;
+top:60px;
 right: 28px;
 width: 20%
 }
 
-.resources-popup {
+.resource-popup {
 display:none;
 margin-top:10px;
 }
 
 
-.resources-container {
+.resource-container {
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
   position: relative;
@@ -253,7 +271,7 @@ margin-top:10px;
   margin-top: 25%;
 }
 
-.resources-container input[type=text], .resources-container input[type=password] {
+.resource-container input[type=text], .resources-container input[type=password] {
 width: 100%;
 padding: 15px;
 margin: 5px 0 22px 0;
@@ -262,12 +280,12 @@ background: #f1f1f1;
 }
 
 
-.resources-container input[type=text]:focus, .resources-container input[type=password]:focus {
+.resource-container input[type=text]:focus, .resources-container input[type=password]:focus {
 background-color: #ddd;
 outline: none;
 }
 
-.resources-container .btn {
+.resource-container .btn {
   border: 0px;
   height: 36px;
   display: inline-block;
@@ -288,6 +306,6 @@ background-color: rgb(230, 0, 35);
   width: 50%;
 }
 
-.resources-container .btn:hover, .open-button:hover {
+.resource-container .btn:hover, .open-button:hover {
 opacity: 1;
 }
