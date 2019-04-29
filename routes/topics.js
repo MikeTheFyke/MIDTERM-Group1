@@ -5,6 +5,17 @@ const router      = express.Router();
 
 module.exports = (knex) => {
 
+//route for ajax request to fetch topics
+  router.get("/retrieve_topic", (req,res) => {
+  knex
+  .select('*')
+  .from('topics')
+  .then((rows) => {
+    return res.send(rows);
+    });
+  });
+
+
    // when user creates a topic
   router.post("/create_topic", (req, res) => {
     const {topic_name} = req.body;
@@ -23,11 +34,12 @@ module.exports = (knex) => {
           .then(() =>{
             return res.redirect(`/users/${req.session.user_id}`);
           })
+    })
 
-})
 
 
 
 return router;
 }
+
 

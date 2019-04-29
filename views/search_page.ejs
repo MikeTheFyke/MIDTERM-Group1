@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-
     <title>re.SOURCE</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -18,21 +17,19 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/search.js"></script>
+
   </head>
   <body>
      <%- include partials/_header.ejs %>
-    <section>
-     <div class="resources-grid-container">
-       <div class="grid-item item-a"><img name="resources" class="reuse-pics" src="/images/Django-Movies.jpg"></div>
-       <div class="grid-item item-b"><img name="resources" class="reuse-pics" src="/images/FugiyaAndMiyagi-Music.jpg"></div>
-       <div class="grid-item item-c"><img name="resources" class="reuse-pics" src="/images/THX11381-Movies.jpg"></div>
-       <div class="grid-item item-d"><img name="resources" class="reuse-pics" src="/images/WhiteZombie-Music.jpg"></div>
+     <h1 class= "search-heading">SEARCH PAGE</h1>
 
-       <div class="grid-item item-e"><img class="reuse-pics" src="/images/BigL-Music.jpg"></div>
-       <div class="grid-item item-f"><img class="reuse-pics" src="/images/Metropolis-Movies.jpg"></div>
-       <div class="grid-item item-g"><img class="reuse-pics" src="/images/Pizza-Food.jpg"></div>
-       <div class="grid-item item-h"><img class="reuse-pics" src="/images/PinkFloyd-Music.jpg"></div>
-     </div>
-     </section>
+      <div style="padding-top: 24px; padding-bottom: 24px">
+        <div class= "search_container"></div>
+        <p class="search_items">Search Items</p>
+
+        <div class="gridCentered">
+      </div>
+      </div>
   </body>
 </html>

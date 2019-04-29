@@ -8,34 +8,31 @@
 
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
 
     <title>re.SOURCE My Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
          <%- include partials/_header.ejs %>
-      <div class="editprofile-container">
+      <div class="edit-profile-container">
         <form action="/api/users/:user_id/edit_profile" method="POST">
-           <label for="first_name"><b>First Name</b></label>
-           <input type="text" placeholder="<%=first_name%>" name="first_name"></input>
 
-           <label for="last_name"><b>Last Name</b></label>
-           <input type="text" placeholder="<%=last_name%>" name="last_name"></input>
+           <input type="text" placeholder="First Name" name="first_name"></input>
 
-           <label for="user_name"><b>Username</b></label>
-           <input type="text" placeholder="<%=user_name%>" name="user_name"></input>
 
-           <label for="email"><b>Email</b></label>
-           <input type="email" placeholder="<%=email%>" name="email"></input>
+           <input type="text" placeholder="Last Name" name="last_name"></input>
 
-           <label for="password"><b>Password</b></label>
-           <input type="password" placeholder="<%=password%>" name="password"></input>
+           <input type="text" placeholder="User Name" name="user_name"></input>
+
+           <input type="email" placeholder="Email" name="email"></input>
+
+           <input type="password" placeholder="Password" name="password"></input>
           <button type="submit"> Update Profile </button>
      </form>
       </div>
