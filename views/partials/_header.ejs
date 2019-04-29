@@ -58,9 +58,9 @@
           <div class="logged-in-links">
             <a href="/users/:user_id">Your Walls</a>
 
-             <button class="register-button" onclick="openForm3()">Create Topic</button>
+             <button class="create-topic-button" onclick="openForm3()">Create Topic</button>
        <div class="register-popup" id="myForm3">
-         <form action="/api/users/register" method="POST" class="register-container">
+         <form action="/api/topics/create_topic" method="POST" class="register-container">
            <h1>Create New Topic</h1>
            <input type="text" placeholder="Enter Topic name" name="topic_name" required>
 
@@ -78,10 +78,9 @@
          </script>
 
 
-
        <button class="resource-button" onclick="openForm4()">Create Resource</button>
        <div class="resource-popup" id="myForm4">
-         <form action="/api/users/register" method="POST" class="resource-container">
+         <form action="/api/resources/create_resource" method="POST" class="resource-container">
            <h1>Create New Resource</h1>
            <input type="text" placeholder="Enter Resource name" name="title" required>
            <input type="text" placeholder="Enter URL" name="url" required>
@@ -89,7 +88,7 @@
            <div class="dropdown_options">
 
            <select name="topics_id">
-                 <option>movies</option>
+                <option>movies</option>
                  <option>food</option>
                   <option>music</option>
                 </select>

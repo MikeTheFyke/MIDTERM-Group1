@@ -1,7 +1,6 @@
 "use strict";
 
 const express = require('express');
-// const app = express();
 const router  = express.Router();
 const bcrypt = require("bcrypt");
 
@@ -44,15 +43,9 @@ module.exports = (knex) => {
             .then((results) => {
               console.log("results 0", results[0]);
               req.session.user_id = results[0].id;
-              // .then(() => {
+
                   return res.redirect(`/users/${req.session.user_id}`);
-                // })
-               /// this inserts new topics//
-              // knex("topics")
-              //   .insert({user_id: req.session.user_id, title: 'First Wall'})
-              //   .then(() => {
-              //     // return res.redirect(`/users/${req.session.user_id}`);
-              //   });
+
             });
         });
     });
@@ -71,14 +64,11 @@ module.exports = (knex) => {
   	knex
   	  .select("*")
   	  .from("users")
-  	  // .where({'user_name': req.body.user_name})
   	  .then((rows) => {
-        // console.log("what is result", rows);
               for (let i = 0; i < rows.length; i++) {
         if (user_name === rows[i].user_name && bcrypt.compareSync(password, rows[i].password) === true) {
           req.session.user_id = rows[i].id;
-          // console.log("req session user id", req.session.user_id);
-          // return res.redirect("/");
+
           return res.redirect(`/users/${req.session.user_id}`);
 
         }
@@ -89,19 +79,47 @@ module.exports = (knex) => {
   	  });
   });
 
-//update profile POST request//
+//update profile POST request// old POST request version
+//   router.post("/:user_id/edit_profile", (req,res) => {
+//     const {first_name,last_name,user_name, email, password} = req.body;
+//   const hashedPassword = bcrypt.hashSync(password, 10);
+
+//     knex
+//       .select("*")
+//       .from("users")
+//       .then((rows) => {
+//         knex('users')
+//         .where({ id: req.session.user_id})
+//         .update({
+//                 first_name: first_name,
+//                 last_name: last_name,
+//                 user_name: user_name,
+//                 email: email,
+//                 password: hashedPassword
+//                 })
+//         .then(() => {
+//           if(first_name && last_name && user_name && email && password) {
+//           return res.redirect(`/users/${req.session.user_id}`);
+//         } else {
+//           return res.status(403).send(" All Fields Must Be Filled to Update Profile!").end();
+//         }
+
+//         })
+//       });
+// });
+
+//this is the updated post request version
   router.post("/:user_id/edit_profile", (req,res) => {
-    // console.log("updated profile!");
     const {first_name,last_name,user_name, email, password} = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
 
     knex
       .select("*")
       .from("users")
-      // .where({'user_name': req.body.user_name})
       .then((rows) => {
-        // console.log("what is result", rows);
-        knex('users')
+          if(first_name && last_name && user_name && email && password) {
+
+          knex('users')
         .where({ id: req.session.user_id})
         .update({
                 first_name: first_name,
@@ -110,27 +128,16 @@ module.exports = (knex) => {
                 email: email,
                 password: hashedPassword
                 })
-        .then(() => {
-          if(first_name && last_name && user_name && email && password) {
+        .then(()=> {
           return res.redirect(`/users/${req.session.user_id}`);
-        } else {
-          return res.status(403).send(" All Fields Must Be Filled to Update Profile!").end();
-
-        }
 
         })
-      //         for (let i = 0; i < rows.length; i++) {
-      //   if (user_name === rows[i].user_name && bcrypt.compareSync(password, rows[i].password) === true) {
-      //     req.session.user_id = rows[i].id;
-      //     // console.log("req session user id", req.session.user_id);
-      //     // return res.redirect("/");
-      //     return res.redirect(`/users/${req.session.user_id}`);
-
-      //   }
-      // }
 
 
-      });
+        } else {
+          return res.status(403).send(" All Fields Must Be Filled to Update Profile!").end();
+        }
+    })
 });
 
 
@@ -140,4 +147,3 @@ module.exports = (knex) => {
 
 }
 
-// users/${req.session.user_id}

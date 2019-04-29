@@ -18,19 +18,19 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each database tables
 const usersRoutes = require("./routes/users");
 const resourcesRoutes   = require("./routes/resources");
-const categoriesRoutes  = require("./routes/topics");
+const topicsRoutes  = require("./routes/topics");
 const ratesRoutes       = require("./routes/ratings");
 const commentsRoutes = require("./routes/comments");
 
 // const viewRoutes = require("./routes/views");
 
 //cleaning function
-function getHeaderTemplateVars(req){
-  let user_id = JSON.stringify(req.session["user_id"]);
-	return {
-		user_id: req.session["user_id"]
-	}
-}
+// function getHeaderTemplateVars(req){
+//   let user_id = JSON.stringify(req.session["user_id"]);
+// 	return {
+// 		user_id: req.session["user_id"]
+// 	}
+// }
 
 //cookie session for midterm project
 app.use(cookieSession({
@@ -59,13 +59,14 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
+app.use("/api/topics", topicsRoutes(knex));
 
 //finish the rest
 
 
 // Home page
 app.get("/", (req, res) => {
-    console.log("req session user id", req.session.user_id);
+    // console.log("req session user id", req.session);
 
   if (req.session.user_id) {
   knex
@@ -73,65 +74,25 @@ app.get("/", (req, res) => {
     .from('users')
     .where('id', req.session.user_id)
     .then((userInfo) => {
-      console.log("user info contains", userInfo[0].user_name);
+      // console.log("user info contains", userInfo[0].user_name);
       let templateVars = {user_name: userInfo[0].user_name};
 
       return res.render('index', templateVars);
     });
 
   } else {
+      // console.log("im trying to laod the main page");
       let templateVars = {user_name: false};
-      return res.render('login',templateVars);
+      return res.render('index',templateVars);
   }
 });
-// LOGIN PAGE GET REQUEST
-  // app.get("/login", (req,res )=> {
-  //   if (req.session.user_id) {
-  // knex
-  //   .select('*')
-  //   .from('users')
-  //   .where('id', req.session.user_id)
-  //   .then((userInfo) => {
-  //     console.log("user info contains", userInfo[0].user_name);
-  //     let templateVars = {user_name: userInfo[0].user_name};
-  //     //will redirect if logged in to the user's wall,therefore need to create
-  //     // user's wall get request to finish the route
-  //     return res.redirect('index', templateVars);
-  //   });
-  // // const loggedUser = req.session.user_id;
-  // // if(loggedUser) {
-  // //   res.redirect("/main");
-  // } else {
-  //     let templateVars = {user_name: false};
 
-  //       res.render("login",templateVars);
-  //     };
-
-  // });
-
-  // GET REGISTER PAGE
-  //dont need no get register route since we got the header to register//
-
-//   app.get("/register", (req,res )=> {
-//   const loggedUser = req.session.user_id;
-//   if(loggedUser) {
-// //when user registers redirect them to the user's wall//
-//     res.redirect("/main");
-//   } else {
-//       let templateVars = {user_name: false};
-//       res.render("register",templateVars);
-//       };
-
-//   });
 
 
 app.get("/users/:user_id", (req,res) => {
-    // console.log("user's wall!!!!!!");
       knex.select('*').from('users')
-    // .join('topics',{'users.id' : 'topic.user_id'})
     .where('id', req.session.user_id)
     .then(function(results) {
-      // console.log("userpage result",results);
 
       if (results[0] === undefined) {
         knex.select('*')
@@ -151,7 +112,6 @@ app.get("/users/:user_id", (req,res) => {
           });
       } else {
         const old_user = results[0];
-        // console.log("results inside old user", results);
         const templateVars = {
           first_name: old_user.first_name,
           last_name: old_user.last_name,

@@ -24,7 +24,6 @@ return Promise.all([
         table.increments();
         table.string('title', 50);
         table.integer('user_id').references('users.id').onDelete('cascade');
-        table.integer('resource_id').references('resources.id').onDelete('cascade');
      }),
 
        knex.schema.createTable('resources', function(table){
