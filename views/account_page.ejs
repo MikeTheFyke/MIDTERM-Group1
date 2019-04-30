@@ -7,13 +7,13 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
+
 
     <title>re.SOURCE My Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -21,19 +21,23 @@
 
   <body>
          <%- include partials/_header.ejs %>
-      <div class="profile-container">
-        <h3> Profile</h3>
-        <h5>First Name: <%=first_name%></h5>
-        <h5>Last Name: <%=last_name%></h5>
-        <h5>Email: <%=email%></h5>
-        <h5>UserID: <%=id%></h5>
-       <a href="/users/:user_id/edit_profile"> <button> Update Profile </button> </a>
+<div class="profile-container">
+       <h3> Profile</h3>
+       <h5 name="first_name">First Name: <%=first_name%></h5>
+       <h5 name="last_name">Last Name: <%=last_name%></h5>
+       <h5 name="user_name">Username: <%=user_name%></h5>
+       <h5 name="email">Email: <%=email%></h5>
 
-      </div>
+       <h5 name="id">UserID:<%=id%></h5>
 
-      <div class= "wall-container">
-        <h2>My Topics </h2>
-        </div>
+      <a href="/users/:user_id/edit_profile"> <button> Update Profile </button> </a>
+
+     </div>
+
+     <div class= "wall-container">
+       <h2>My Topics </h2>
+
+     </div>
 
 
   </body>

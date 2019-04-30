@@ -21,6 +21,9 @@ const resourcesRoutes   = require("./routes/resources");
 const topicsRoutes  = require("./routes/topics");
 const ratesRoutes       = require("./routes/ratings");
 const commentsRoutes = require("./routes/comments");
+const searchRoutes = require("./routes/search");
+
+
 
 // const viewRoutes = require("./routes/views");
 
@@ -60,13 +63,13 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
 app.use("/api/topics", topicsRoutes(knex));
+app.use("/api/search", searchRoutes(knex));
 
-//finish the rest
+
 
 
 // Home page
 app.get("/", (req, res) => {
-    // console.log("req session user id", req.session);
 
   if (req.session.user_id) {
   knex
@@ -81,7 +84,6 @@ app.get("/", (req, res) => {
     });
 
   } else {
-      // console.log("im trying to laod the main page");
       let templateVars = {user_name: false};
       return res.render('index',templateVars);
   }
@@ -151,9 +153,12 @@ app.get("/users/:user_id/edit_profile", (req,res) => {
     });
     });
 
+app.get("/new_resource",(req,res) =>{
+  return res.render("new_resource")
+})
+
   // LOGOUT ROUTE
   app.post("/logout", (req, res) => {
-    console.log("logging out!");
   req.session = null;
   return res.redirect("/");
 });

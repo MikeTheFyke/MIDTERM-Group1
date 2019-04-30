@@ -3,8 +3,9 @@
   <div class= "nav-left">
      <img class="logo" src="/images/recycle.png">
       <a href="/">re.SOURCE</a>
-      <form id="search-bar" method="GET" action="/results">
-        <input type="text" placeholder="search" name"search" />
+      <form id="search-bar" method="POST" action="/api/search/:searchQuery">
+        <input type="text" placeholder="search" name"searchText" />
+        <button class="search_button"></button>
       </form>
   </div>
   <% if (!user_name) {%>
@@ -12,10 +13,8 @@
        <div class="login-popup" id="myForm">
          <form action="/api/users/login" method ="POST" class="login-container">
            <h1>Login</h1>
-           <label for="user_name"><b>Username</b></label>
            <input type="text" placeholder="Enter Username" name="user_name" required>
 
-           <label for="passsword"><b>Password</b></label>
            <input type="password" placeholder="Enter Password" name="password" required>
 
            <button type="submit" class="btn">Login</button>
@@ -55,12 +54,21 @@
     </div>
 
     <% } else { %>
-          <div class="logged-in-links">
-            <a href="/users/:user_id">Your Walls</a>
+          <div class="logout">
+                <p id="logged-in-message">Logged in as :
+                <%=user_name%>
+                </p>
+              <form action="/logout" method="POST">
+                <button class="logout-button" type="submit">Logout</button>
+              </form>
+            </div>
+             <form action="/users/:user_id" method="POST">
+              <button class="my-wall-button">My Wall</button>
+            </form>
 
              <button class="create-topic-button" onclick="openForm3()">Create Topic</button>
        <div class="register-popup" id="myForm3">
-         <form action="/api/topics/create_topic" method="POST" class="register-container">
+         <form action="/api/topics/create_topic" method="POST" class="resource-container">
            <h1>Create New Topic</h1>
            <input type="text" placeholder="Enter Topic name" name="topic_name" required>
 
@@ -88,9 +96,11 @@
            <div class="dropdown_options">
 
            <select name="topics_id">
-                <option>movies</option>
-                 <option>food</option>
-                  <option>music</option>
+                <option>Travelling</option>
+                <option>Makeup</option>
+                <option>History</option>
+                 <option>Food</option>
+                  <option>Music</option>
                 </select>
 
           </div>
@@ -110,15 +120,7 @@
             </div>
 
           </div>
-          <div class="logout">
-            <p id="logged-in-message">Logged in as :
-              <%=user_name%>
-             </p>
-             <form action="/logout" method="POST">
-            <button class="log-button" type="submit">Logout</button>
-            </form>
 
-          </div>
   <% } %>
   </div>
 

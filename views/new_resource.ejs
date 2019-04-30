@@ -8,12 +8,16 @@
 
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new_resource.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/resources.css" type="text/css" />
+
 
     <title>re.SOURCE - New Resource</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/resources.css" type="text/css" />
+
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -23,21 +27,43 @@
          <%- include partials/_header.ejs %>
     <form class="form-inline block" action="/api/resources/new_resource" method="POST">
 
-          // <div class="new_resource_container">
-          //     <h1>Create your re.SOURCE</h1>
-          //     <input type="text" placeholder="Title" name="title" maxlength="50"/>
-          //     <input type="text" placeholder="URL" name="url" maxlength="50"/>
-          //     <textarea type="text" placeholder="Description" name="description" maxlength="250"/></textarea>
-          //          <label>Select a Topic</label>
-          //   <div class="dropdown_options">
-          //       <select name="link_topic">
-          //        <option>movies</option>
-          //        <option>food</option>
-          //         <option>music</option>
-          //       </select>
-          //     <button class="button mark">New Resource</button>
+    <div class= "wall-container">
+        <h2>My Movie Resources </h2>
+          <div class="topic-grid-container">
+            <div class="grid-item item-a"><img class="reuse-pics" src="/images/Django-Movies.jpg"></div>
+            <div class="grid-item item-b"><img class="reuse-pics" src="/images/FugiyaAndMiyagi-Music.jpg"></div>
+            <div class="grid-item item-c"><img class="reuse-pics" src="/images/THX11381-Movies.jpg"></div>
+            <div class="grid-item item-d"><img class="reuse-pics" src="/images/Metropolis-Movies.jpg"></div>
+           </div>
+      </div>
+      <div class="info">
+        <div class="titles">
+        <p> Django Unchained </p>
+        <a href="http://www.unchainedmovie.com/">Django Homepage</a>
+        <p>The Best Film of 2012</p>
+      </div>
+      <div class="titles2">
+        <p> Fugiya & Miyagi </p>
+        <a href="http://www.knickbocker.com/">Fugiya Mainpage</a>
+        <p>Knickerbocker Glory</p>
+      </div>
+      <div class="titles3">
+        <p> THX1138 </p>
+        <a href="http://www.thx1138.com/">The Future Is Now</a>
+        <p>George Lucas'</p>
+        <p>First And Best Film</p>
+      </div>
+      <div class="titles4">
+        <p>Metropolis</p>
+        <a href="http://www.frintlang.com/">Frintz Lang Homepage</a>
+        <p>A Visionary Directory</p>
+        <p>Born Before His Time</p>
+      </div>
             </div>
           </div>
     </form>
   </body>
 </html>
+
+
+
